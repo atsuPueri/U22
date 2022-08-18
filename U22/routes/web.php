@@ -1,5 +1,8 @@
 <?php
 
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test', function () {
+    /** @var Request */
+    $request = resolve(Request::class);
+    // dump($request);
+
+    Cookie::queue(cookie("A", "A", 2));
+    dump($request->cookie());
+
+
+    // return resolve(Response::class)->http_response_code;
+    var_dump(Cookie::get());
+
+    // return view('welcome');
 });
