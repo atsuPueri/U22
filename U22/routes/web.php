@@ -80,3 +80,49 @@ Route::get('/manager/managerChat', function () {
         'input' => ''//いるかわからんけどインプットの内容
     ]);
 });
+
+// 庶民落とし物
+Route::get('/user/userLostList', function () {
+    // $user = new User();
+    return view('user/userLostList', [
+        'data' => [
+            ["id" => "1","date" => "20220724", "name" => "テストデータ1", "genre" => "アクセサリー", "state" => "有"],
+            ["id" => "2","date" => "20220726", "name" => "テストデータ2", "genre" => "革小物", "state" => "無"],
+            ["id" => "3","date" => "20220726", "name" => "テストデータ3", "genre" => "アクセサリー", "state" => "有"],
+            ["id" => "4","date" => "20220727", "name" => "テストデータ4", "genre" => "傘", "state" => "有"],
+            ["id" => "5","date" => "20220728", "name" => "テストデータ5", "genre" => "衣類", "state" => "無"],
+            ["id" => "6","date" => "20220730", "name" => "テストデータ6", "genre" => "衣類", "state" => "有"],
+            ["id" => "7","date" => "20220731", "name" => "テストデータ7", "genre" => "アクセサリー", "state" => "無"],
+        ],// 忘れ物一覧
+    ]);
+});
+
+// 管理落とし物
+Route::get('/manager/managerLostList', function () {
+    // $user = new User();
+    return view('manager/managerLostList', [
+        'data' => [
+            ["id" => "1","date" => "20220724", "name" => "テストデータ1", "genre" => "アクセサリー", "state" => "有"],
+            ["id" => "2","date" => "20220726", "name" => "テストデータ2", "genre" => "革小物", "state" => "無"],
+            ["id" => "3","date" => "20220726", "name" => "テストデータ3", "genre" => "アクセサリー", "state" => "有"],
+            ["id" => "4","date" => "20220727", "name" => "テストデータ4", "genre" => "傘", "state" => "有"],
+            ["id" => "5","date" => "20220728", "name" => "テストデータ5", "genre" => "衣類", "state" => "無"],
+            ["id" => "6","date" => "20220730", "name" => "テストデータ6", "genre" => "衣類", "state" => "有"],
+            ["id" => "7","date" => "20220731", "name" => "テストデータ7", "genre" => "アクセサリー", "state" => "無"],
+        ],// 忘れ物一覧
+    ]);
+});
+
+// 管理落とし物詳細
+Route::get('/manager/managerLostDetail', function () {
+    // $user = new User();
+    return view('manager/manaLostDetail', [
+        'data' => [
+            "id" => "1",
+            "date" => "202207242138",
+            "name" => "テストデータ1",
+            "genre" => "アクセサリー",
+            "state" => "有"
+        ],// 選択されたID番目の忘れ物
+    ]);
+});
