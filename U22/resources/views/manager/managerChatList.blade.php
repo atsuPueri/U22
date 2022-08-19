@@ -23,7 +23,13 @@
             <p>{{$commentNum}}</p>
         </div>
     </div>
-    
-    {{require_once('../resources/views/manager/managerMenu.blade.php')}}
+
+    {{view('/manager/managerMenu', [
+        'menu' => [
+            'chat' => ['img' => 'chatCheck.png', 'name' => 'check'],
+            'lostList' => ['img' => 'lost.png', 'name' => 'notCheck'],
+            'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
+        ]
+    ])}}
 </body>
 </html>
