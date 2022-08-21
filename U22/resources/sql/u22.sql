@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-21 14:59:56
+-- 生成日時: 2022-08-21 15:51:08
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 8.1.6
 
@@ -61,7 +61,6 @@ CREATE TABLE `user` (
   `login_way` int(11) NOT NULL,
   `login_token` text NOT NULL,
   `expiration_date` int(11) NOT NULL,
-  `display_name` text NOT NULL,
   `status` int(11) NOT NULL,
   `is_shop` int(11) NOT NULL COMMENT 'shop側か\r\n0: ショップじゃない\r\n1: ショップ',
   `image_name` text NOT NULL
@@ -75,7 +74,8 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_general` (
   `id` int(11) NOT NULL,
-  `real_name` text NOT NULL
+  `real_name` text NOT NULL,
+  `display_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -110,7 +110,7 @@ CREATE TABLE `user_shop` (
   `id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `shop_name` text NOT NULL,
-  `住所` text NOT NULL
+  `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
