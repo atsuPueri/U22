@@ -11,7 +11,8 @@ class UserUpdate
     /**
      * ユーザー情報更新。
      */
-    public function update(array $user): bool{
+    public function update(array $user): bool
+    {
         if($user instanceof UserGeneral){
             $sqlUpdate = DB::table('user_general')
                 ->join('user', 'user_general.id', '=', 'user.id')
@@ -23,13 +24,13 @@ class UserUpdate
                 );
         }elseif($user instanceof UserShop){
             $sqlUpdate = DB::table('user_shop')
-            ->join('user', 'user_shop.id', '=', 'user.id')
-            ->where('user_shop.id', ':id')
-            ->update(['user.name' => ':name'],
-                ['user.password' => ':password'],
-                ['user.login_way' => ':login_way'],
-                ['user_shop.address' => ':address']
-            );
+                ->join('user', 'user_shop.id', '=', 'user.id')
+                ->where('user_shop.id', ':id')
+                ->update(['user.name' => ':name'],
+                    ['user.password' => ':password'],
+                    ['user.login_way' => ':login_way'],
+                    ['user_shop.address' => ':address']
+                );
         }
     }
 
