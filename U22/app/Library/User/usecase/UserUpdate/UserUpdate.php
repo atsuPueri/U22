@@ -6,7 +6,7 @@ use App\Library\User\UserGeneral;
 use App\Library\User\UserShop;
 
 //アダプタでやる
-class UserInterface
+class UserUpdate
 {
     /**
      * @var PDO DB接続オブジェクト
@@ -28,7 +28,6 @@ class UserInterface
     /**
      * ユーザー情報更新。
      * 
-     * @param Dept $dept 更新情報が格納されたDeptオブジェクト。主キーがこのオブジェクトのidの値のレコードを更新する。
      * @return boolean 登録が成功したかどうかを表す値。
      */
     public function update($user): bool{
