@@ -11,7 +11,7 @@ class UserUpdate
     /**
      * ユーザー情報更新。
      */
-    public function update(array $user): bool
+    public static function execute(array $user): bool
     {
         if($user instanceof UserGeneral){
             $sqlUpdate = DB::table('user_general')
@@ -32,6 +32,7 @@ class UserUpdate
                 ['user_shop.address' => ':address']
             );
         }
+        return $sqlUpdate !== 0;
     }
 
 }
