@@ -1,7 +1,7 @@
 <?php
 namespace App\Library\User\usecase\UserUpdate;
 
-use PDO;
+use Illuminate\Support\Facades\DB;
 use App\Library\User\UserGeneral;
 use App\Library\User\UserShop;
 
@@ -9,20 +9,20 @@ use App\Library\User\UserShop;
 class UserDelete
 {
     /**
-     * @var PDO DB接続オブジェクト
+     * ユーザー情報削除。
      */
-    private $db;
-
-    /**
-     * コンストラクタ
-     * 
-     * @param PDO $db DB接続オブジェクト
-     */
-    public function __construct(PDO $db){
-        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-        $this->db = $db;
+    public function delete(array $user): bool{
+        if($user instanceof UserGeneral){
+            $sqlDelete = DB::table('user_general')
+                ->join('user', 'user_general.id', '=', 'user.id')
+                ->where('user_general.id', ':id')
+                ->delete();
+        }elseif($user instanceof UserShop){
+            $sqlUpdate = DB::table('user_shop')
+            ->join('user', 'user_shop.id', '=', 'user.id')
+            ->where('user_shop.id', ':id')
+            ->delete();
+        }
     }
 
 }

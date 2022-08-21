@@ -1,7 +1,7 @@
 <?php
 namespace App\Library\User\usecase\UserUpdate;
 
-use PDO;
+use Illuminate\Support\Facades\DB;
 use App\Library\User\UserGeneral;
 use App\Library\User\UserShop;
 
@@ -9,51 +9,28 @@ use App\Library\User\UserShop;
 class UserUpdate
 {
     /**
-     * @var PDO DB接続オブジェクト
-     */
-    private $db;
-
-    /**
-     * コンストラクタ
-     * 
-     * @param PDO $db DB接続オブジェクト
-     */
-    public function __construct(PDO $db){
-        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-        $this->db = $db;
-    }
-
-    /**
      * ユーザー情報更新。
-     * 
-     * @return boolean 登録が成功したかどうかを表す値。
      */
-    public function update($user): bool{
+    public function update(array $user): bool{
         if($user instanceof UserGeneral){
-            $sqlUpdate = "UPDATE general SET name = :name,login_way = :login_way,display_name = :display_name WHERE id = :id";
-            $stmt = $this->db->prepare($sqlUpdate);
-            $stmt->bindValue(":name",$user->get_name(),PDO::PARAM_STR);
-            $stmt->bindValue(":login_way",$user->get_login_way(),PDO::PARAM_INT);
-            $stmt->bindValue(":display_name",$user->get_display_name(),PDO::PARAM_STR);
-            $stmt->bindValue(":id",$user->get_id(),PDO::PARAM_INT);
-            $result = $stmt->execute();
-            return $result;
+            $sqlUpdate = DB::table('user_general')
+                ->join('user', 'user_general.id', '=', 'user.id')
+                ->where('user_general.id', ':id')
+                ->update(['user.name' => ':name'],
+                    ['user.password' => ':password'],
+                    ['user.login_way' => ':login_way'],
+                    ['user_general.display_name' => ':display_name']
+                );
         }elseif($user instanceof UserShop){
-            $sqlUpdate = "UPDATE general SET name = :name,login_way = :login_way,display_name = :display_name,address = :address WHERE id = :id";
-            $stmt = $this->db->prepare($sqlUpdate);
-            $stmt->bindValue(":name",$user->get_name(),PDO::PARAM_STR);
-            $stmt->bindValue(":login_way",$user->get_login_way(),PDO::PARAM_INT);
-            $stmt->bindValue(":display_name",$user->get_display_name(),PDO::PARAM_STR);
-            $stmt->bindValue(":address",$user->get_address(),PDO::PARAM_STR);
-            $stmt->bindValue(":id",$user->get_id(),PDO::PARAM_INT);
-            $result = $stmt->execute();
-            return $result;
-        }else{
-            return null;
+            $sqlUpdate = DB::table('user_shop')
+            ->join('user', 'user_shop.id', '=', 'user.id')
+            ->where('user_shop.id', ':id')
+            ->update(['user.name' => ':name'],
+                ['user.password' => ':password'],
+                ['user.login_way' => ':login_way'],
+                ['user_shop.address' => ':address']
+            );
         }
-
     }
 
 }
