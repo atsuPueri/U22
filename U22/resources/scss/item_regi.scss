@@ -1,0 +1,98 @@
+//非表示
+.visuallyhidden {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 5% 1fr 5%;
+}
+
+main{
+    grid-column: 2/3;
+    h1{
+        margin: 10px 0;
+        font-size: x-large;
+    }
+    #image{
+        h3{
+            font-size: larger;
+        }
+        img{
+            width: 40%;
+            border: 1px rgb(171, 171, 171) solid;
+            background-color: rgb(248, 248, 248);
+            padding: 0 10px;
+            margin: 10px calc(5% - 2px);
+        }
+        input{
+            display: none;
+        }
+    }
+
+    #category{
+        h3{
+            font-size: larger;
+            margin: 10px 0;
+        }
+        select{
+            padding: 0 18px 0 3px;
+            border-bottom: solid black 1px;
+            background: url(../img/下矢印.png) no-repeat right 3px center / 12px auto;
+        }
+    }
+
+    #date{
+        h3{
+            font-size: larger;
+            margin: 10px 0;
+        }
+        select{
+            text-align: center;
+            border-bottom: solid black 1px;
+            padding: 0 2px;
+        }
+    }
+
+    #time{
+        h3{
+            font-size: larger;
+            margin: 10px 0;
+        }
+        select{
+            text-align: center;
+            border-bottom: solid black 1px;
+            padding: 0 2px; 
+        }
+    }
+
+    #detail{
+        h3{
+            font-size: larger;
+            margin: 10px 0;
+        }
+        textarea{
+            resize: none;
+            width: 100%;
+            border: 1px rgb(171, 171, 171) solid;
+            background-color: rgb(248, 248, 248);
+        }
+    }
+    
+    button{
+        border: 1px rgb(171, 171, 171) solid;
+        background-color: rgb(248, 248, 248);
+        padding: 5px;
+        margin-top: 10px;
+        position: absolute;
+        right: 5%;
+    }
+}
