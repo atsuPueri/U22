@@ -18,19 +18,21 @@ class UserUpdateAdapter implements UserUpdatePort
             $sqlUpdate = DB::table('user_general')
             ->join('user', 'user_general.id', '=', 'user.id')
             ->where('user_general.id', ':id')
-            ->update(['user.name' => ':name'],
-            ['user.password' => ':password'],
-            ['user.login_way' => ':login_way'],
-            ['user_general.display_name' => ':display_name']
+            ->update(
+                ['user.name' => ':name'],
+                ['user.password' => ':password'],
+                ['user.login_way' => ':login_way'],
+                ['user_general.display_name' => ':display_name']
             );
         }elseif($user instanceof UserShop){
             $sqlUpdate = DB::table('user_shop')
             ->join('user', 'user_shop.id', '=', 'user.id')
             ->where('user_shop.id', ':id')
-            ->update(['user.name' => ':name'],
-            ['user.password' => ':password'],
-            ['user.login_way' => ':login_way'],
-            ['user_shop.address' => ':address']
+            ->update(
+                ['user.name' => ':name'],
+                ['user.password' => ':password'],
+                ['user.login_way' => ':login_way'],
+                ['user_shop.address' => ':address']
             );
         }
         return $sqlUpdate !== 0;
