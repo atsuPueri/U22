@@ -2,7 +2,7 @@
 namespace App\Library\User;
 use App\Library\User\User;
 
-class UserShop
+class UserShop extends User
 {
     private int $shop_id;
     private string $address;
