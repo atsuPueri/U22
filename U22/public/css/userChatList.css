@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  z-index: 7;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #D1F6F9;
+}
+
+header p {
+  text-align: center;
+  color: #767878;
+  padding-top: 30px;
+}
+
+.shopChat {
+  padding-top: 30px;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #7b7a7a;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.shopChat img {
+  width: 30px;
+  height: auto;
+}
+
+.shopChat .chatTop p {
+  margin: 0;
+  font-size: 13px;
+  color: #595a5a;
+}
+
+.shopChat .chatTop a {
+  display: block;
+  color: #595a5a;
+  line-height: 20px;
+  font-size: 12px;
+  width: 300px;
+}
+
+.shopChat .commentNumber {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 30px;
+}
+
+.shopChat .commentNumber p {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.shopChat:nth-of-type(1) {
+  margin-top: 70px;
+}
+
+.shopChat:last-of-type {
+  margin-bottom: 100px;
+  border: none;
+}
+/*# sourceMappingURL=userChatList.css.map */

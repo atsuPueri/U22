@@ -1,0 +1,87 @@
+@media screen and (min-width: 390px) {
+  body {
+    color: #333;
+    font-size: 14px;
+  }
+  body h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    background-color: #D1F6F9;
+  }
+  body main {
+    width: 90%;
+    margin: 0 auto;
+  }
+  body main select {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+  body main #selectArea {
+    position: relative;
+    width: 70px;
+    border-bottom: solid 1px #eee;
+  }
+  body main #selectArea::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+    pointer-events: none;
+    transform: translateY(-50%) rotate(-135deg);
+  }
+  body main #itemArea {
+    font-size: 10px;
+    overflow-y: scroll;
+    height: 80vh;
+  }
+  body main #itemArea div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 72px;
+    margin-top: 8px;
+    border: solid 1px #ccc;
+    border-radius: 15px;
+    box-shadow: 0px 1px 1px #333;
+  }
+  body main #itemArea div p {
+    width: 30%;
+    text-align: center;
+  }
+  body main #itemArea div p:nth-last-child(1) {
+    width: 10%;
+  }
+  body main #itemArea .itemDate {
+    margin-bottom: 16px;
+  }
+  body main #itemArea .chatLabel {
+    display: none;
+    width: 75%;
+    margin: 8px auto 24px;
+    padding: 10px;
+    background-color: blue;
+    color: #fff;
+    text-align: center;
+  }
+  body main #itemArea input[type=checkbox] {
+    display: none;
+  }
+  body main #itemArea input[type=checkbox]:checked + .chatLabel {
+    display: block;
+  }
+  body main #itemArea > div:first-child {
+    height: 30px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+}/*# sourceMappingURL=lostList.css.map */
