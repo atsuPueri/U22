@@ -22,4 +22,9 @@ class GetLostItem
         return $this->port->get_lost_items($ids);
     }
 
+    public function get_search_lost_items(array $search_info): array
+    {
+        return $this->port->get_search_lost_item($search_info);
+    }
+
 }
