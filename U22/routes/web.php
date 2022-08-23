@@ -19,10 +19,22 @@ Route::get('/', function () {
 
 Route::get('/user/userChatList', function () {
     return view('user/userChatList' , [
-        'managerImgName' => 'kizoku.png',//店のプロフィール画像名
-        'shopName' => '鳥貴族',//店名
-        'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-        'commentNum' => '1',//コメント数
+        "chatList" => [//チャット一覧の配列
+            [
+                'managerId' => 0,//店のID(多分ページ遷移するときに使うかな？)
+                'managerImgName' => 'kizoku.png',//店のプロフィール画像名
+                'shopName' => '鳥貴族',//店名
+                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
+                'commentNum' => '1',//コメント数
+            ],
+            [
+                'managerId' => 1,//店のID(多分ページ遷移するときに使うかな？)
+                'managerImgName' => 'kizoku.png',//店のプロフィール画像名
+                'shopName' => '鳥貴族',//店名
+                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
+                'commentNum' => '1',//コメント数
+            ]
+        ],
         'menu' => [
             'chat' => ['img' => 'chatCheck.png', 'name' => 'check'],
             'search' => ['img' => 'search.png', 'name' => 'notCheck'],
@@ -32,23 +44,36 @@ Route::get('/user/userChatList', function () {
 });
 
 
+
 Route::get('/manager/managerChatList', function () {
     return view('manager/managerChatList' , [
-        'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
-        'userName' => '宇宙猫',//ユーザー名
-        'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-        'commentNum' => '1',//コメント数
+        "chatList" => [//チャット一覧の配列
+            [
+                'userId' => 0,//ユーザーID(多分ページ遷移するときに使うかな？)
+                'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
+                'userName' => '宇宙猫',//ユーザー名
+                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
+                'commentNum' => '1',//コメント数
+            ],
+            [
+                'userId' => 1,//ユーザーID(多分ページ遷移するときに使うかな？)
+                'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
+                'userName' => '宇宙猫',//ユーザー名
+                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
+                'commentNum' => '1',//コメント数
+            ]
+        ],
         'menu' => [
             'chat' => ['img' => 'chatCheck.png', 'name' => 'check'],
             'lostList' => ['img' => 'lost.png', 'name' => 'notCheck'],
             'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
         ]//メニューバー関連の配列選択されてるページだと画像名にCheckが入る
+
     ]);
 });
 
 Route::get('/user/userChat', function () {
     return view('user/userChat' , [
-        'link' =>  '../resources/views/userChatList.blade.php',//戻るボタンのリンク、いらないかもしれやんけど一応
         'managerImgName' => 'kizoku.png',//店のプロフィール画像名
         'managerName' => '鳥貴族',//店名
         'chat' => [
@@ -66,7 +91,6 @@ Route::get('/user/userChat', function () {
 
 Route::get('/manager/managerChat', function () {
     return view('manager/managerChat' , [
-        'link' =>  '../resources/views/managerChatList.blade.php',//戻るボタンのリンク、いらないかもしれやんけど一応
         'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
         'userName' => '宇宙猫',//ユーザー名
         'chat' => [
