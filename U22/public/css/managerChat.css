@@ -63,7 +63,7 @@ header p img {
   width: 95%;
   margin: 0 auto;
   margin-top: 150px;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 }
 
 #chat .userComment {
@@ -96,8 +96,13 @@ header p img {
   margin-bottom: 30px;
 }
 
+#chat .managerComment img {
+  text-align: right;
+  margin-bottom: 30px;
+  width: 200px;
+}
+
 #chat .managerImgComment {
-  margin: 0 0 0 auto;
   text-align: right;
   margin-bottom: 30px;
 }
@@ -127,20 +132,17 @@ header p img {
 #chatForm form {
   width: 90%;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
 }
 
-#chatForm input {
+#chatForm #chatComment {
   height: 30px;
   width: 80%;
   border-radius: 10px;
   border: solid 1px #bebdbd;
+}
+
+#chatForm #chatImg {
+  margin-bottom: 5px;
 }
 
 #chatForm button {
