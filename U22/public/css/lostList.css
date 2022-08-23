@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @media screen and (min-width: 390px) {
   body {
     color: #333;
@@ -13,6 +14,7 @@
   body main {
     width: 90%;
     margin: 0 auto;
+    /* Chrome, Safari 対応 */
   }
   body main select {
     position: relative;
@@ -22,7 +24,9 @@
   body main #selectArea {
     position: relative;
     width: 70px;
+    margin: 12px 0px 8px;
     border-bottom: solid 1px #eee;
+    font-size: 16px;
   }
   body main #selectArea::after {
     content: "";
@@ -39,7 +43,14 @@
   body main #itemArea {
     font-size: 10px;
     overflow-y: scroll;
+    /* IE, Edge 対応 */
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
     height: 80vh;
+  }
+  body main #itemArea h3 {
+    margin-bottom: 4px;
   }
   body main #itemArea div {
     display: flex;
@@ -47,7 +58,7 @@
     justify-content: space-around;
     align-items: center;
     height: 72px;
-    margin-top: 8px;
+    margin-bottom: 8px;
     border: solid 1px #ccc;
     border-radius: 15px;
     box-shadow: 0px 1px 1px #333;
@@ -56,26 +67,31 @@
     width: 30%;
     text-align: center;
   }
-  body main #itemArea div p:nth-last-child(1) {
+  body main #itemArea div .state {
     width: 10%;
+  }
+  body main #itemArea div select:first-child {
+    margin-left: 30%;
+    width: 30%;
+  }
+  body main #itemArea div #existence {
+    width: 10%;
+    margin-right: 30%;
   }
   body main #itemArea .itemDate {
     margin-bottom: 16px;
   }
-  body main #itemArea .chatLabel {
-    display: none;
-    width: 75%;
-    margin: 8px auto 24px;
+  body main #itemArea .chatNavButton {
+    display: block;
+    width: 20%;
+    margin: 0px auto;
     padding: 10px;
     background-color: blue;
     color: #fff;
     text-align: center;
   }
-  body main #itemArea input[type=checkbox] {
+  body main #itemArea::-webkit-scrollbar {
     display: none;
-  }
-  body main #itemArea input[type=checkbox]:checked + .chatLabel {
-    display: block;
   }
   body main #itemArea > div:first-child {
     height: 30px;
