@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <title>U22</title>
     <link rel="stylesheet" href="../css/destyle.css">
     <link rel="stylesheet" href="../css/lostList.css">
     <link rel="stylesheet" href="../css/userMenu.css">
@@ -27,31 +27,42 @@
             </select>
         </div>
 
+
         {{-- 忘れ物一覧個別表示 --}}
         <div id="itemArea">
             {{-- 忘れ物表示項目の指定 --}}
             <div>
-                <p>拾得日時</p>
-                <p>忘れ物名</p>
-                <p>カテゴリー</p>
-                <p>有無</p>
+                {{-- 種類名の表示 --}}
+                <select name="genre" >
+                    <option value="">---</option>
+
+                    {{-- 種類繰り返し Start --}}
+                        @foreach($genre as $item)
+                            <option value="{{$item}}">{{$item}}</option>
+                        @endforeach
+                    {{-- 種類繰り返し End --}}
+                </select>
+
+                {{-- 有無の表示 --}}
+                <select name="existence" id="existence">
+                    <option value="">---</option>
+                    <option value="">有</option>
+                    <option value="">無</option>
+                </select>
+
             </div>
 
             {{-- 忘れ物個別表示 --}}
             {{-- 繰り返し処理 Start --}}
                 @foreach($data as $value)
-                    {{-- id番目のデータへ画面遷移 --}}
-                    <label for="label{{$value["id"];}}">
-                        <div class="">
-                            <p>{{$value["date"];}}</p>
-                            <p>{{$value["name"];}}</p>
-                            <p>{{$value["genre"];}}</p>
-                            <p>{{$value["state"];}}</p>
-                        </div>
-                    </label>
-                    <input type="checkbox" name="" id="label{{$value["id"];}}">
-                    {{-- チャット画面へ --}}
-                    <a href="#" class="chatLabel">お問い合せ</a>
+                    <h3>{{$value["date"];}}</h3>
+                    <div class="">
+                        <p><img src="http://placehold.jp/45x45.png" alt="ダミー画像"></p>
+                        <p>{{$value["genre"];}}</p>
+                        <p class="state">{{$value["state"];}}</p>
+                            {{-- チャット画面へ --}}
+                        <a href="#" class="chatNavButton">お問い合せ</a>
+                    </div>
                 @endforeach
             {{-- 繰り返し処理 End --}}
         </div>
