@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-24 05:16:38
+-- 生成日時: 2022-08-24 05:28:32
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 8.1.6
 
@@ -37,13 +37,6 @@ CREATE TABLE `lost_item` (
   `pickup_user_id` int(11) DEFAULT NULL,
   `police_station_address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- テーブルのデータのダンプ `lost_item`
---
-
-INSERT INTO `lost_item` (`id`, `shop_id`, `genre_id`, `name`, `acquisition_date`, `pickup_date`, `pickup_user_id`, `police_station_address`) VALUES
-(1, 1, 0, '現金', 11111111, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -82,6 +75,7 @@ CREATE TABLE `user_general` (
 
 CREATE TABLE `user_login_mail` (
   `id` int(11) NOT NULL,
+  `user_type` int(11) NOT NULL COMMENT '0: shop\r\n1: general',
   `mail_address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,6 +87,7 @@ CREATE TABLE `user_login_mail` (
 
 CREATE TABLE `user_login_phone` (
   `id` int(11) NOT NULL,
+  `user_type` int(11) NOT NULL COMMENT '0: shop\r\n1: general',
   `phone_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -124,6 +119,18 @@ CREATE TABLE `user_shop` (
 --
 ALTER TABLE `lost_item`
   ADD PRIMARY KEY (`id`);
+
+--
+-- テーブルのインデックス `user_login_mail`
+--
+ALTER TABLE `user_login_mail`
+  ADD PRIMARY KEY (`id`,`user_type`);
+
+--
+-- テーブルのインデックス `user_login_phone`
+--
+ALTER TABLE `user_login_phone`
+  ADD PRIMARY KEY (`id`,`user_type`);
 
 --
 -- テーブルのインデックス `user_shop`
