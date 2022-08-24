@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-21 15:51:08
+-- 生成日時: 2022-08-24 05:16:38
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 8.1.6
 
@@ -38,6 +38,13 @@ CREATE TABLE `lost_item` (
   `police_station_address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- テーブルのデータのダンプ `lost_item`
+--
+
+INSERT INTO `lost_item` (`id`, `shop_id`, `genre_id`, `name`, `acquisition_date`, `pickup_date`, `pickup_user_id`, `police_station_address`) VALUES
+(1, 1, 0, '現金', 11111111, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -52,28 +59,17 @@ CREATE TABLE `shop_group` (
 -- --------------------------------------------------------
 
 --
--- テーブルの構造 `user`
+-- テーブルの構造 `user_general`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `user_general` (
   `id` int(11) NOT NULL,
   `password` text NOT NULL,
   `login_way` int(11) NOT NULL,
   `login_token` text NOT NULL,
   `expiration_date` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `is_shop` int(11) NOT NULL COMMENT 'shop側か\r\n0: ショップじゃない\r\n1: ショップ',
-  `image_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `user_general`
---
-
-CREATE TABLE `user_general` (
-  `id` int(11) NOT NULL,
+  `icon_name` text NOT NULL,
   `real_name` text NOT NULL,
   `display_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -109,6 +105,12 @@ CREATE TABLE `user_login_phone` (
 CREATE TABLE `user_shop` (
   `id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
+  `password` text NOT NULL,
+  `login_way` int(11) NOT NULL COMMENT '1: mail\r\n2; PHONE',
+  `login_token` text NOT NULL COMMENT '自動ログインに使用するトークン情報',
+  `expiration_date` int(11) NOT NULL COMMENT '自動ログイン有効期限（timestamp)\r\n',
+  `status` int(11) NOT NULL,
+  `icon_name` text NOT NULL,
   `shop_name` text NOT NULL,
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,6 +126,12 @@ ALTER TABLE `lost_item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- テーブルのインデックス `user_shop`
+--
+ALTER TABLE `user_shop`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- ダンプしたテーブルの AUTO_INCREMENT
 --
 
@@ -131,6 +139,12 @@ ALTER TABLE `lost_item`
 -- テーブルの AUTO_INCREMENT `lost_item`
 --
 ALTER TABLE `lost_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- テーブルの AUTO_INCREMENT `user_shop`
+--
+ALTER TABLE `user_shop`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
