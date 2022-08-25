@@ -12,20 +12,30 @@ class UserDeleteAdapter implements UserDeletePort
     /**
      * ユーザー情報削除。
      */
-    public function delete(User $user): bool
+    public function delete(int $id): bool
     {
-        if($user instanceof UserGeneral){
-            $sqlDelete = DB::table('user_general')
-            ->join('user', 'user_general.id', '=', 'user.id')
-            ->where('user_general.id', ':id')
+        /**
+         * @param int is_shop 店舗側かユーザー側か
+         */
+        $is_shop = DB::table('user')->where('id', $id)->get('is_shop');
+
+        if($is_shop == 0){
+            $sql_delete = DB::table('user_general')
+            ->where('id', $id)
             ->delete();
-        }elseif($user instanceof UserShop){
-            $sqlDelete = DB::table('user_shop')
-            ->join('user', 'user_shop.id', '=', 'user.id')
-            ->where('user_shop.id', ':id')
+            $sql_user_delete = DB::table('user')
+            ->where('id', $id)
+            ->delete();
+
+        }elseif($is_shop == 1){
+            $sql_delete = DB::table('user_shop')
+            ->where('id', $id)
+            ->delete();
+            $sql_user_delete = DB::table('user')
+            ->where('id', $id)
             ->delete();
         }
-        return $sqlDelete !== 0;
+        return $sql_delete !== 0;
     }
 
 }

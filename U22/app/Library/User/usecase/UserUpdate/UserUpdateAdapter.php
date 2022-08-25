@@ -10,28 +10,31 @@ use App\Library\User\User\UserShop;
 class UserUpdateAdapter implements UserUpdatePort
 {
     /**
-     * ユーザー情報削除。
+     * ユーザー情報更新。
      */
     public function update(User $user): bool
     {
-        if($user instanceof UserGeneral){
+        $is_shop = $user->get_is_shop();
+        if($is_shop == 0){
             $sqlUpdate = DB::table('user_general')
             ->join('user', 'user_general.id', '=', 'user.id')
             ->where('user_general.id', ':id')
             ->update(
-                ['user.name' => ':name'],
                 ['user.password' => ':password'],
                 ['user.login_way' => ':login_way'],
+                ['user.image_name' => ':image_name'],
+                ['user_general.real_name' => ':real_name'],
                 ['user_general.display_name' => ':display_name']
             );
-        }elseif($user instanceof UserShop){
+        }elseif($is_shop == 1){
             $sqlUpdate = DB::table('user_shop')
             ->join('user', 'user_shop.id', '=', 'user.id')
             ->where('user_shop.id', ':id')
             ->update(
-                ['user.name' => ':name'],
                 ['user.password' => ':password'],
                 ['user.login_way' => ':login_way'],
+                ['user.image_name' => ':image_name'],
+                ['user_shop.shop_name' => ':shop_name'],
                 ['user_shop.address' => ':address']
             );
         }

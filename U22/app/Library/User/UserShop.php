@@ -4,32 +4,45 @@ use App\Library\User\User;
 
 class UserShop extends User
 {
-    private int $shop_id;
+    private int $group_id;
+    private string $shop_name;
     private string $address;
 
     /**
      * @param array{
-     *      shop_id: int,
+     *      group_id: int,
+     *      shop_name: string,
      *      address: string
      * }
      */
     public function __construct(array $user_info)
     {
         parent::__construct($user_info);
-        $this->shop_id = $user_info["shop_id"];
+        $this->group_id = $user_info["group_id"];
+        $this->shop_name = $user_info["shop_name"];
         $this->address = $user_info["address"];
     }
 
 
     // 以下アクセサメソッド。
-    public function get_shop_id(): ?int
+    public function get_group_id(): ?int
     {
-        return $this->shop_id;
+        return $this->group_id;
     }
-    public function set_shop_id(int $shop_id): void
+    public function set_group_id(int $group_id): void
     {
-        $this->shop_id = $shop_id;
+        $this->group_id = $group_id;
     }
+
+    public function get_shop_name(): ?string
+    {
+        return $this->shop_name;
+    }
+    public function set_shop_name(string $shop_name): void
+    {
+        $this->shop_name = $shop_name;
+    }
+
     public function get_address(): ?string
     {
         return $this->address;
