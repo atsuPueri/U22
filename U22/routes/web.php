@@ -126,3 +126,11 @@ Route::get('/manager/managerLostDetail', function () {
         ],// 選択されたID番目の忘れ物
     ]);
 });
+
+
+Route::get('/login', function () {
+    return view('login',[
+        'errLog' => 'ここにLoginIdエラー',
+        'errPass' => 'ここにPasswordエラー',
+    ]);
+});
