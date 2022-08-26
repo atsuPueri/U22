@@ -121,6 +121,13 @@ Route::get('/manager/managerLostList', function () {
     ]);
 });
 
+// 管理落とし物詳細
+// 管理落とし物詳細
+Route::get('/manager/managerLostDetail', [DetailController::class, 'detail']);
+
+
+// ログイン画面
+// メール
 Route::get('/login/mailLogin', function () {
     return view('login/mailLogin',[
         'errMail' => 'ここにメールアドレスのエラー',
@@ -128,6 +135,7 @@ Route::get('/login/mailLogin', function () {
     ]);
 });
 
+// 電話番号
 Route::get('/login/telLogin', function () {
     return view('login/telLogin',[
         'errTel' => 'ここに電話番号のエラー',
@@ -135,6 +143,25 @@ Route::get('/login/telLogin', function () {
     ]);
 });
 
-// 管理落とし物詳細
-// 管理落とし物詳細
-Route::get('/manager/managerLostDetail', [DetailController::class, 'detail']);
+// 新規登録画面
+Route::get('/user/userInput', function () {
+    return view('user/userInput',[
+        'errName' => 'ここに名前のエラー',
+        'errTel' => 'ここに電話番号のエラー',
+        'errMail' => 'ここにメールアドレスのエラー',
+        'errPassword' => 'ここにPasswordのエラー',
+    ]);
+});
+
+Route::get('/user/userCheck', function () {
+    return view('user/userCheck',[
+        'userName' => 'ここに名前',
+        'userTel' => 'ここに電話番号',
+        'userMail' => 'ここにメールアドレス',
+        'userPassword' => 'ここにPassword',
+    ]);
+});
+
+Route::get('/user/userRegist', function () {
+    return view('user/userRegist');
+});
