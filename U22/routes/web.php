@@ -121,6 +121,20 @@ Route::get('/manager/managerLostList', function () {
     ]);
 });
 
+Route::get('/login/mailLogin', function () {
+    return view('login/mailLogin',[
+        'errMail' => 'ここにメールアドレスのエラー',
+        'errPass' => 'ここにPasswordエラー',
+    ]);
+});
+
+Route::get('/login/telLogin', function () {
+    return view('login/telLogin',[
+        'errTel' => 'ここに電話番号のエラー',
+        'errPass' => 'ここにPasswordエラー',
+    ]);
+});
+
 // 管理落とし物詳細
 // 管理落とし物詳細
 Route::get('/manager/managerLostDetail', [DetailController::class, 'detail']);
