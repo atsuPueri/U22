@@ -1,0 +1,51 @@
+@media screen and (min-width: 390px) {
+  body {
+    position: relative;
+    height: 100vh;
+    color: #333;
+    font-size: 14px;
+  }
+  body #registBody {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    width: 100%;
+    height: 90vh;
+  }
+  body #registBody h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+  body #registBody ul {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto 24px;
+  }
+  body #registBody ul li {
+    width: 33.3%;
+    padding: 8px;
+    border: solid 1px #eee;
+    color: #ccc;
+  }
+  body #registBody ul #nowPage {
+    background-color: #D1F6F9;
+    color: navy;
+  }
+  body #registBody main {
+    margin: 24px 0;
+  }
+  body #registBody main p {
+    text-align: center;
+    font-size: 18px;
+  }
+  body #registBody main a {
+    display: block;
+    margin: 16px 0;
+    text-align: center;
+  }
+}/*# sourceMappingURL=userRegist.css.map */
