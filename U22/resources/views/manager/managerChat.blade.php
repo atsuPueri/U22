@@ -22,6 +22,7 @@
         <p class="{{$content['who']}}">{{$content['comment']}}</p>
         @endif
         @endforeach
+        <p id="dummyComment"></p>
     </div>
 
 
@@ -33,5 +34,6 @@
         </form>
     </div>
     
+    <script src="../../resources/js/chat.js"></script>
 </body>
 </html>
