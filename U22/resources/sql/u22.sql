@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-24 05:28:32
+-- 生成日時: 2022-08-27 03:41:24
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 8.1.6
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- データベース: `u22`
 --
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `chat_message`
+--
+
+CREATE TABLE `chat_message` (
+  `id` int(11) NOT NULL,
+  `chat_room_id` int(11) NOT NULL,
+  `send_type` int(11) NOT NULL COMMENT '0: shop\r\n1: general',
+  `message` text NOT NULL,
+  `send_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `chat_room`
+--
+
+CREATE TABLE `chat_room` (
+  `id` int(11) NOT NULL,
+  `user_general_id` int(11) NOT NULL,
+  `user_shop_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -115,6 +141,12 @@ CREATE TABLE `user_shop` (
 --
 
 --
+-- テーブルのインデックス `chat_message`
+--
+ALTER TABLE `chat_message`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- テーブルのインデックス `lost_item`
 --
 ALTER TABLE `lost_item`
@@ -141,6 +173,12 @@ ALTER TABLE `user_shop`
 --
 -- ダンプしたテーブルの AUTO_INCREMENT
 --
+
+--
+-- テーブルの AUTO_INCREMENT `chat_message`
+--
+ALTER TABLE `chat_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- テーブルの AUTO_INCREMENT `lost_item`
