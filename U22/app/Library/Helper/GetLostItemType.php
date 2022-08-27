@@ -27,4 +27,23 @@ class GetLostItemType
     {
         return array_keys(self::get_categorys());
     }
+
+    /**
+     * 中身を数値添え字形式の一次元配列で返す
+     * [
+     *     0 => 現金,
+     *     1 => ハンドバッグ
+     *     2 => ビジネスバッグ,
+     *     ...
+     * ]
+     * @return list<string>
+     */
+    public static function get_id_to_categorys(): array
+    {
+        $result = [];
+        foreach (self::get_categorys() as $category) {
+            $result = \array_merge($result, $category);
+        }
+        return $result;
+    }
 }
