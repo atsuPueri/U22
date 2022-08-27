@@ -63,7 +63,7 @@ header p img {
   width: 95%;
   margin: 0 auto;
   margin-top: 150px;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 
 #chat .userComment {
@@ -113,6 +113,10 @@ header p img {
 
 #chat .userImgComment img {
   width: 200px;
+}
+
+#chat #dummyComment{
+  height: 50px;
 }
 
 #chatForm {
