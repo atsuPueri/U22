@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <a href="">戻る</a>
+        <a href="./userChatList">戻る</a>
         <p><img src="../img/manager/{{$managerImgName}}" alt="">{{$managerName}}</p>
     </header>
     
@@ -26,8 +26,9 @@
 
 
     <div id="chatForm">
-        <form action="">
-            <input type="text">
+        <form action="./userChat">
+            <input type="file" name="chatImg" id="chatImg">
+            <input type="text" name="chatComment" id="chatComment" value="{{$input}}">
             <button type="submit">送信</button>
         </form>
     </div>

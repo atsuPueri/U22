@@ -11,18 +11,26 @@
     <header>
         <p>チャット一覧</p>
     </header>
-
+    @foreach ($chatList as $list)
     <div class="shopChat">
-        <img src="../img/manager/{{$managerImgName}}" alt="">
+        <img src="../img/manager/{{$list['managerImgName']}}" alt="">
         <div class="chatTop">
-            <p>{{$shopName}}</p>
-            <a href="">{{$comment}}</a>
+            <p>{{$list['shopName']}}</p>
+            <p class="newComment">{{$list['comment']}}</p>
         </div>
         <div class="commentNumber">
-            <p>{{$commentNum}}</p>
+            <p>{{$list['commentNum']}}</p>
         </div>
+        <a href="./userChat?managerId={{$list['managerId']}}"></a>
     </div>
+    @endforeach
 
-    <?php require_once '../resources/views/user/userMenu.blade.php'; ?>
+    {{view('/user/userMenu', [
+        'menu' => [
+            'chat' => ['img' => 'chatCheck.png', 'name' => 'check'],
+            'search' => ['img' => 'search.png', 'name' => 'notCheck'],
+            'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
+        ]
+    ])}}
 </body>
 </html>

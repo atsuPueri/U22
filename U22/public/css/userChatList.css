@@ -22,6 +22,7 @@ header p {
 }
 
 .shopChat {
+  position: relative;
   padding-top: 30px;
   width: 90%;
   margin: 0 auto;
@@ -51,7 +52,7 @@ header p {
   color: #595a5a;
 }
 
-.shopChat .chatTop a {
+.shopChat .chatTop .newComment {
   display: block;
   color: #595a5a;
   line-height: 20px;
@@ -70,6 +71,14 @@ header p {
   color: white;
   margin: 0 auto;
   text-align: center;
+}
+
+.shopChat a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .shopChat:nth-of-type(1) {

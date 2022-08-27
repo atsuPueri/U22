@@ -13,16 +13,19 @@
         <p>チャット一覧</p>
     </header>
 
-    <div class="userChat">
-        <img src="../img/user/{{$userImgName}}" alt="">
-        <div class="chatTop">
-            <p>{{$userName}}</p>
-            <a href="">{{$comment}}</a>
+        @foreach ($chatList as $list)
+        <div class="userChat">
+            <img src="../img/user/{{$list['userImgName']}}" alt="">
+            <div class="chatTop">
+                <p>{{$list['userName']}}</p>
+                <p class="newComment">{{$list['comment']}}</p>
+            </div>
+            <div class="commentNumber none">
+                <p>{{$list['commentNum']}}</p>
+            </div>
+            <a href="./managerChat?userId={{$list['userId']}}"></a>
         </div>
-        <div class="commentNumber none">
-            <p>{{$commentNum}}</p>
-        </div>
-    </div>
+        @endforeach
 
     {{view('/manager/managerMenu', [
         'menu' => [
