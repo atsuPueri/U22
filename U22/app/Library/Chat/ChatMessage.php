@@ -4,10 +4,10 @@ namespace App\Library\Chat;
 
 class ChatMessage
 {
-    const SEND_TYPE_GENERAL_MASSAGE = 0;
-    const SEND_TYPE_SHOP_MASSAGE = 1;
-    const SEND_TYPE_GENERAL_IMAGE = 2;
-    const SEND_TYPE_SHOP_IMAGE = 3;
+    const SEND_TYPE_SHOP_MASSAGE = 0;
+    const SEND_TYPE_GENERAL_MASSAGE = 1;
+    const SEND_TYPE_SHOP_IMAGE = 2;
+    const SEND_TYPE_GENERAL_IMAGE = 3;
 
     public int $send_type;
     public string $message;
