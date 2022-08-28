@@ -10,13 +10,13 @@ class SendChat
         $this->port = $port;
     }
 
-    public function save_message(int $user_id, int $send_type, string $message): void
+    public function save_message(int $send_room, int $user_id, int $send_type, string $send_name): void
     {
-        $this->port->save_message($user_id, $send_type, $message);
+        $this->port->save_message($send_room, $user_id, $send_type, $send_type);
     }
 
-    public function save_image(): void
+    public function save_image(int $send_room, int $user_id, int $send_type, string $file_name): void
     {
-        $this->port->save_image();
+        $this->port->save_image($send_room, $user_id, $send_type, $file_name);
     }
 }
