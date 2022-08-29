@@ -89,9 +89,10 @@ main #history ul li img {
   margin-right: 5px;
   width: 30px;
   float: left;
-}
+}/*# sourceMappingURL=search.css.map*/
 
-footer {
+
+/* footer {
   grid-column: 1/4;
   grid-row: 4/5;
   background-color: #3879D9;
@@ -99,4 +100,4 @@ footer {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-}/*# sourceMappingURL=search.css.map */
+} */
