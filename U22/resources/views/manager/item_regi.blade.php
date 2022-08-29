@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/destyle.css">
-    <link rel="stylesheet" href="../css/item_regi.css">
+    <link rel="stylesheet" href="./css/destyle.css">
+    <link rel="stylesheet" href="./css/item_regi.css">
     <title>落とし物登録</title>
 </head>
 <body>
@@ -14,23 +14,23 @@
             <h2 class="visuallyhidden">忘れ物</h2>
             <form action="#">
                 <section id="image">
-                    <h3>写真</h3> 
+                    <h3>写真</h3>
                     <label for="image1">
                         <img src="../img/image.png" alt="忘れ物１">
                         <input type="file" name="" id="image1">
-                    </label> 
+                    </label>
                     <label for="image2">
                         <img src="../img/image.png" alt="忘れ物２">
                         <input type="file" name="" id="image2">
-                    </label> 
+                    </label>
                     <label for="image3">
                         <img src="../img/image.png" alt="忘れ物３">
                         <input type="file" name="" id="image3">
-                    </label> 
+                    </label>
                     <label for="image4">
                         <img src="../img/image.png" alt="忘れ物４">
                         <input type="file" name="" id="image4">
-                    </label> 
+                    </label>
                 </section>
                 <section id="category">
                     <h3>カテゴリ</h3>
