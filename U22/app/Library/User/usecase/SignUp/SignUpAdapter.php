@@ -4,36 +4,23 @@ namespace App\Library\User\usecase\SignUp;
 use App\Library\User\usecase\SignUp\SignUpPort;
 use App\Library\User\User\User;
 use Illminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SignUpAdapter implements SignUpPort
 {
     /**
-     * ユーザー情報削除。
+     * ユーザー情報登録。
      */
-    public function delete(int $id): bool
+    public function signup(User $user): bool
     {
-        /**
-         * @param int is_shop 店舗側かユーザー側か
-         */
-        $is_shop = DB::table('user')->where('id', $id)->get('is_shop');
+        $password = Hash::make($user->userPassword);
 
-        if($is_shop == 0){
-            $sql_delete = DB::table('user_general')
-            ->where('id', $id)
-            ->delete();
-            $sql_user_delete = DB::table('user')
-            ->where('id', $id)
-            ->delete();
-
-        }elseif($is_shop == 1){
-            $sql_delete = DB::table('user_shop')
-            ->where('id', $id)
-            ->delete();
-            $sql_user_delete = DB::table('user')
-            ->where('id', $id)
-            ->delete();
-        }
-        return $sql_delete !== 0;
+        $sql_signup = DB::table('user')->insert([
+            'password' => $password,
+            'phone_number' => ':userTel',
+            'mail_address' => ':userMail',
+        ]);
+        return $sql_signup !== 0;
     }
 
 }
