@@ -82,14 +82,16 @@ main #result ul li img {
   margin-right: 10px;
   width: 50px;
   float: left;
-}
+}/*# sourceMappingURL=search_result.css.map */
 
-footer {
+
+
+/* footer {
   grid-column: 1/4;
   grid-row: 3/4;
-  background-color: #3879D9;
+  background-color: #b9b9b9;
   width: 100%;
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-}/*# sourceMappingURL=search_result.css.map */
+} */
