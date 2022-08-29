@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-24 05:28:32
+-- 生成日時: 2022-08-29 06:26:28
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 8.1.6
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- データベース: `u22`
 --
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `chat_message`
+--
+
+CREATE TABLE `chat_message` (
+  `id` int(11) NOT NULL,
+  `chat_room_id` int(11) NOT NULL,
+  `send_type` int(11) NOT NULL COMMENT '0: shopMessage\r\n1: generalMessage\r\n2: shopImagePath\r\n3: generalImagePath',
+  `message` text NOT NULL,
+  `send_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `chat_room`
+--
+
+CREATE TABLE `chat_room` (
+  `id` int(11) NOT NULL,
+  `user_general_id` int(11) NOT NULL,
+  `user_shop_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -41,24 +67,14 @@ CREATE TABLE `lost_item` (
 -- --------------------------------------------------------
 
 --
--- テーブルの構造 `shop_group`
---
-
-CREATE TABLE `shop_group` (
-  `id` int(11) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='店舗の所属先一覧';
-
--- --------------------------------------------------------
-
---
 -- テーブルの構造 `user_general`
 --
 
 CREATE TABLE `user_general` (
   `id` int(11) NOT NULL,
+  `phone_number` text NOT NULL,
+  `mail_address` text NOT NULL,
   `password` text NOT NULL,
-  `login_way` int(11) NOT NULL,
   `login_token` text NOT NULL,
   `expiration_date` int(11) NOT NULL,
   `status` int(11) NOT NULL,
@@ -70,41 +86,17 @@ CREATE TABLE `user_general` (
 -- --------------------------------------------------------
 
 --
--- テーブルの構造 `user_login_mail`
---
-
-CREATE TABLE `user_login_mail` (
-  `id` int(11) NOT NULL,
-  `user_type` int(11) NOT NULL COMMENT '0: shop\r\n1: general',
-  `mail_address` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `user_login_phone`
---
-
-CREATE TABLE `user_login_phone` (
-  `id` int(11) NOT NULL,
-  `user_type` int(11) NOT NULL COMMENT '0: shop\r\n1: general',
-  `phone_number` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- テーブルの構造 `user_shop`
 --
 
 CREATE TABLE `user_shop` (
   `id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `phone_number` text NOT NULL,
+  `mail_address` text NOT NULL,
   `password` text NOT NULL,
-  `login_way` int(11) NOT NULL COMMENT '1: mail\r\n2; PHONE',
   `login_token` text NOT NULL COMMENT '自動ログインに使用するトークン情報',
   `expiration_date` int(11) NOT NULL COMMENT '自動ログイン有効期限（timestamp)\r\n',
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL COMMENT '0: 利用可能状態\r\n1: 削除状態',
   `icon_name` text NOT NULL,
   `shop_name` text NOT NULL,
   `address` text NOT NULL
@@ -115,22 +107,16 @@ CREATE TABLE `user_shop` (
 --
 
 --
+-- テーブルのインデックス `chat_message`
+--
+ALTER TABLE `chat_message`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- テーブルのインデックス `lost_item`
 --
 ALTER TABLE `lost_item`
   ADD PRIMARY KEY (`id`);
-
---
--- テーブルのインデックス `user_login_mail`
---
-ALTER TABLE `user_login_mail`
-  ADD PRIMARY KEY (`id`,`user_type`);
-
---
--- テーブルのインデックス `user_login_phone`
---
-ALTER TABLE `user_login_phone`
-  ADD PRIMARY KEY (`id`,`user_type`);
 
 --
 -- テーブルのインデックス `user_shop`
@@ -141,6 +127,12 @@ ALTER TABLE `user_shop`
 --
 -- ダンプしたテーブルの AUTO_INCREMENT
 --
+
+--
+-- テーブルの AUTO_INCREMENT `chat_message`
+--
+ALTER TABLE `chat_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- テーブルの AUTO_INCREMENT `lost_item`
