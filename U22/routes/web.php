@@ -147,14 +147,14 @@ Route::get('/manager/item_confirm', function () {
 
 //検索画面過去に訪れた店舗
 Route::get('/user/search', function(){
-    return view('/user/search', function(){
-        "data" => [
+    return view('/user/search', [
+        'data' => [
             ["name" => "鳥貴族", "subname" => "梅田店", "img" => "toriki_icon.jpg"],
-            ["name" => "鳥貴族", "subname" => "中崎町店", "img" => "toriki_icon.jpg"]
-            ["name" => "鳥貴族", "subname" => "阪急東通り２号店", "img" => "toriki_icon.jpg"]
+            ["name" => "鳥貴族", "subname" => "中崎町店", "img" => "toriki_icon.jpg"],
+            ["name" => "鳥貴族", "subname" => "阪急東通り２号店", "img" => "toriki_icon.jpg"],
             ["name" => "鳥貴族", "subname" => "曽根崎センタービル店", "img" => "toriki_icon.jpg"]
         ]
-    });
+    ]);
 });
 
 //検索結果画面
@@ -170,4 +170,4 @@ Route::get('/user/search_result', function(){
             ["name" => "鳥貴族福島店", "img" => "toriki_icon.jpg","address" => "大阪府大阪市福島区小松原町1-10", "address2" => ""],
         ]
     ]);
-})
+});

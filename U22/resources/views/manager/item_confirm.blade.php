@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/destyle.css">
-    <link rel="stylesheet" href="../css/item_confirm.css">
+    <link rel="stylesheet" href="../../public/css/destyle.css">
+    <link rel="stylesheet" href="../../public/css/item_confirm.css">
     <title>登録確認</title>
 </head>
 <body>
