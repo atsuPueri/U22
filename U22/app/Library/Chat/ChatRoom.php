@@ -29,7 +29,7 @@ class ChatRoom
     public function to_UserShop(): UserShop
     {
         $result = DB::table('users_general')
-            ->where('id', '=', $this->general_id)
+            ->where('id', '=', $this->shop_id)
             ->get();
         return new UserShop($result->all());
     }
