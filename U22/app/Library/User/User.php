@@ -6,7 +6,8 @@ abstract class User
 {
     private int $id;
     private string $password;
-    private int $login_way;
+    private int $phone_number;
+    private string $mail_address;
     private string $login_token;
     private string $expiration_date;
     private bool $status;
@@ -17,7 +18,8 @@ abstract class User
      * @param array{
      *      id: int,
      *      password: string,
-     *      login_way: int,
+     *      phone_number: int,
+     *      mail_address: string,
      *      login_token: string,
      *      expiration_date: string,
      *      status: bool,
@@ -29,7 +31,8 @@ abstract class User
     {
         $this->id = $user_info["id"];
         $this->password = $user_info["password"];
-        $this->login_way = $user_info["login_way"];
+        $this->phone_number = $user_info["phone_number"];
+        $this->mail_address = $user_info["mail_address"];
         $this->login_token = $user_info["login_token"];
         $this->expiration_date = $user_info["expiration_date"];
         $this->status = $user_info["status"];
@@ -52,13 +55,22 @@ abstract class User
         $this->password = $password;
     }
 
-    public function get_login_way(): ?int
+    public function get_phone_number(): ?int
     {
-        return $this->login_way;
+        return $this->phone_number;
     }
-    public function set_login_way(int $login_way): void
+    public function set_phone_number(int $phone_number): void
     {
-        $this->login_way = $login_way;
+        $this->phone_number = $phone_number;
+    }
+
+    public function get_mail_address(): ?string
+    {
+        return $this->mail_address;
+    }
+    public function set_mail_address(string $mail_address): void
+    {
+        $this->mail_address = $mail_address;
     }
 
     public function get_login_token(): ?string
