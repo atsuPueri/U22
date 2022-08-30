@@ -8,7 +8,7 @@
         <p class="{{$menu['search']['name']}}">検索</p>
     </div>
     <div class="menuBtn">
-        <a href=""><img src="../img/parts/{{$menu['resume']['img']}}" alt=""></a>
+        <a href="./userProfile"><img src="../img/parts/{{$menu['resume']['img']}}" alt=""></a>
         <p class="{{$menu['resume']['name']}}">プロフィール</p>
         
     </div>

@@ -15,7 +15,7 @@
 
         @foreach ($chatList as $list)
         <div class="userChat">
-            <img src="../img/user/{{$list['userImgName']}}" alt="">
+            <img src="{{asset('storage/images/user/'.$list['userImgName'])}}" alt="">
             <div class="chatTop">
                 <p>{{$list['userName']}}</p>
                 <p class="newComment">{{$list['comment']}}</p>

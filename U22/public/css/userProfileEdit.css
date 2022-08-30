@@ -1,0 +1,115 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  z-index: 7;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #D1F6F9;
+}
+
+header p {
+  text-align: center;
+  color: #767878;
+  padding-top: 30px;
+}
+
+#editForm {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 140px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#editForm form {
+  width: 100%;
+}
+
+#editForm form #editFile {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+#editForm form #editFile .title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#editForm form #editFile .title p {
+  margin-bottom: 0;
+}
+
+#editForm form #editFile .title .errMsg {
+  height: 10px;
+  color: red;
+}
+
+#editForm form .editInput {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+#editForm form .editInput .title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#editForm form .editInput .title p {
+  margin-bottom: 0;
+}
+
+#editForm form .editInput .title .errMsg {
+  height: 10px;
+  color: red;
+}
+
+#editForm form .editInput input {
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid #747171;
+  width: 100%;
+}
+
+#editForm form .editInput input:focus {
+  border: aqua 1px solid;
+}
+
+#editForm form button {
+  padding: 10px;
+  width: 100%;
+  margin-top: 5%;
+  background-color: aqua;
+  border: none;
+}
+
+#backBtn {
+  color: #e9eded;
+  display: block;
+  padding: 10px;
+  width: 85%;
+  background-color: #a5a6a7;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+/*# sourceMappingURL=userProfileEdit.css.map */
