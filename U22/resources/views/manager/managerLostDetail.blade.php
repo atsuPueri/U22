@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U22</title>
-    <link rel="stylesheet" href="./css/destyle.css">
-    <link rel="stylesheet" href="./css/lostDetail.css">
+    <link rel="stylesheet" href="../css/destyle.css">
+    <link rel="stylesheet" href="../css/lostDetail.css">
 </head>
 <body>
     {{-- 忘れ物詳細 --}}
     <h1>詳細</h1>
     <main>
         {{-- 何もなければ戻る --}}
-        <a href="./manager">戻る</a>
+        <a href="./managerLostList">&lt;&lt;&nbsp;戻る</a>
         <h2>{{ $data["name"] }}</h2>
         <img src="http://placehold.jp/350x350.png" alt="ダミー画像">
-        <form action="#" method="POST">
+        <form action="#" method="POST" id="mainForm">
             <dl>
-                <dt>カテゴリー</dt>
+                <dt>種類名</dt>
                 {{-- ここにカテゴリが入る --}}
                 <dd>{{ $data["genre"] }}</dd>
 
@@ -49,7 +49,7 @@
             </label>
         </form>
         {{-- 持ち主が見つかった --}}
-        <button type="submit">完了</button>
+        <button type="submit" name="" value="" form="mainForm">完了</button>
     </main>
 </body>
 </html>

@@ -33,20 +33,20 @@
             <div>
                 <p>拾得日時</p>
                 <p>忘れ物名</p>
-                <p>カテゴリー</p>
-                <p>有無</p>
+                <p>種類名</p>
+                <p class="state">有無</p>
             </div>
 
             {{-- 忘れ物個別表示 --}}
             {{-- 繰り返し処理 Start --}}
                 @foreach($data as $value)
                     {{-- id番目のデータへ画面遷移 --}}
-                    <a href="./manager/manaLostDetail">
+                    <a href="./managerLostDetail?id={{$value["id"];}}">
                         <div class="">
                             <p>{{$value["date"];}}</p>
                             <p>{{$value["name"];}}</p>
                             <p>{{$value["genre"];}}</p>
-                            <p>{{$value["state"];}}</p>
+                            <p class="state">{{$value["state"];}}</p>
                         </div>
                     </a>
                 @endforeach
