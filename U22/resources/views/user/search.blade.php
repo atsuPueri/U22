@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/destyle.css">
-    <link rel="stylesheet" href="./css/userMenu.css">
-    <link rel="stylesheet" href="./css/search.css">
+    <link rel="stylesheet" href="../css/destyle.css">
+    <link rel="stylesheet" href="../css/userMenu.css">
+    <link rel="stylesheet" href="../css/search.css">
     <title>検索画面</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <form action="#" class="search_container">
             <input type="text" placeholder="店舗名を入力してください">
             <button type="submit">
-                <img src="./img/parts/search.png" alt="">
+                <img src="../img/parts/search.png" alt="">
             </button>
         </form>
     </header>
@@ -25,7 +25,7 @@
             <ul>
                 @foreach($data as $content)
                 <li>
-                    <img src="./img/manager/{{$content['img']}}" alt="アイコン">
+                    <img src="{{asset('storage/images/user/'.$content['img'])}}" alt="アイコン">
                     <h3>{{$content['name']}}</h3>
                     <p>{{$content['subName']}}</p>
                 </li>
@@ -34,7 +34,13 @@
         </article>
     </main>
     <footer>
-    <?php require_once '../resources/views/user/userMenu.blade.php'; ?>
+    {{view('/user/userMenu', [
+        'menu' => [
+            'chat' => ['img' => 'chat.png', 'name' => 'notCheck'],
+            'search' => ['img' => 'searchCheck.png', 'name' => 'check'],
+            'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
+        ]
+    ])}}
     </footer>
 </body>
 </html>
