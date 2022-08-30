@@ -14,15 +14,16 @@
             <h1>LOGIN</h1>
         </header>
         <main>
-            <form action="#" method="post">
+            <form action="./telLogin" method="post">
+                @csrf
                 <dl>
                     <dt><label for="tel">TEL</label></dt>
                     <dd><input type="text" name="tel" id="tel" value=""></dd>
-                    <dd class="errMsg">{{$errTel}}</dd>
+                    <dd class="errMsg">{{session('errTel')}}</dd>
 
                     <dt><label for="password">PASSWORD</label></dt>
                     <dd><input type="text" name="password" id="password" value=""></dd>
-                    <dd class="errMsg">{{$errPass}}</dd>
+                    <dd class="errMsg">{{session('errPass')}}</dd>
 
                 </dl>
                 <button type="submit" name="" value="">LOGIN</button>

@@ -3,9 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\login\MailLoginController;
+use App\Http\Controllers\login\TelLoginController;
+use App\Http\Controllers\manager\ManagerEditPropertyNotificationController;
+use App\Http\Controllers\User\UserChatListController;
 use App\Http\Controllers\User\userCheckController;
 use App\Http\Controllers\User\UserInputController;
+use App\Http\Controllers\User\userProfileController;
+use App\Http\Controllers\User\UserProfileEditController;
 use App\Http\Controllers\User\UserRegistController;
+use App\Library\Helper\GetNowLoginUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,35 +25,12 @@ use App\Http\Controllers\User\UserRegistController;
 */
 
 Route::get('/', function () {
+    $a = new GetNowLoginUser();
+    dd($a->get(GetNowLoginUser::TYPE_GENERAL));
     return view('welcome');
 });
 
-Route::get('/user/userChatList', function () {
-    return view('user/userChatList' , [
-        "chatList" => [//チャット一覧の配列
-            [
-                'managerId' => 0,//店のID(多分ページ遷移するときに使うかな？)
-                'managerImgName' => 'kizoku.png',//店のプロフィール画像名
-                'shopName' => '鳥貴族',//店名
-                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-                'commentNum' => '1',//コメント数
-            ],
-            [
-                'managerId' => 1,//店のID(多分ページ遷移するときに使うかな？)
-                'managerImgName' => 'kizoku.png',//店のプロフィール画像名
-                'shopName' => '鳥貴族',//店名
-                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-                'commentNum' => '1',//コメント数
-            ]
-        ],
-        'menu' => [
-            'chat' => ['img' => 'chatCheck.png', 'name' => 'check'],
-            'search' => ['img' => 'search.png', 'name' => 'notCheck'],
-            'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
-        ]//メニューバー関連の配列選択されてるページだと画像名にCheckが入る
-    ]);
-});
-
+Route::get('/user/userChatList', [UserChatListController::class, 'show']);
 
 
 Route::get('/manager/managerChatList', function () {
@@ -155,22 +138,12 @@ Route::get('/manager/managerLostDetail', [DetailController::class, 'detail']);
 
 // ログイン画面
 // メール
-Route::get('/login/mailLogin', function () {
-    return view('login/mailLogin',[
-        'errMail' => 'ここにメールアドレスのエラー',
-        'errPass' => 'ここにPasswordエラー',
-    ]);
-});
-
-Route::any('/login/test', [MailLoginController::class, 'show']);
+Route::get('/login/mailLogin', [MailLoginController::class, 'show']);
+Route::post('/login/mailLogin', [MailLoginController::class, 'login']);
 
 // 電話番号
-Route::get('/login/telLogin', function () {
-    return view('login/telLogin',[
-        'errTel' => 'ここに電話番号のエラー',
-        'errPass' => 'ここにPasswordエラー',
-    ]);
-});
+Route::get('/login/telLogin', [TelLoginController::class, 'show']);
+Route::post('/login/telLogin', [TelLoginController::class, 'login']);
 
 // 新規登録画面
 Route::get('/user/userInput', [UserInputController::class, 'show']);
@@ -180,16 +153,7 @@ Route::get('/user/userCheck', [UserCheckController::class, 'show']);
 
 Route::post('/user/userRegist', [UserRegistController::class, 'show']);
 
-Route::get('/user/userProfile', function () {
-    return view('user/userProfile' , [
-        'userImg' => 'uchuneko.png',//画像名
-        'userName' => 'uchuneko',//ユーザー名
-        'userMail' => 'uchuneko@gmail.com',//ユーザー名
-        'userTell' => '00000000000',//電話番号
-        'userId' => '0',//ユーザーID(いるかわからんけど一応)
-        'userPass' => '•••••••••'//パスワード(伏字になってる)
-    ]);
-});
+Route::get('/user/userProfile', [userProfileController::class, 'show']);
 
 
 Route::get('/manager/managerProfile', function () {
@@ -204,17 +168,7 @@ Route::get('/manager/managerProfile', function () {
     ]);
 });
 
-Route::get('/user/userProfileEdit', function () {
-    return view('user/userProfileEdit' , [
-        'edit' => [//valueが情報,errMsgがエラー文
-            'account' => ['value' => '宇宙猫' , 'errMsg' => ''],//アカウント名
-            'mail' => ['value' => 'uchuneko@gmail' , 'errMsg' => ''],//メアド
-            'tell' => ['value' => '00000000000' , 'errMsg' => ''],//電話番号
-            'pass' => ['value' => '12345678' , 'errMsg' => ''],//パスワード
-            'icon' => ['value' => '' , 'errMsg' => '']//アイコン
-        ]
-    ]);
-});
+Route::get('/user/userProfileEdit', [UserProfileEditController::class, 'show']);
 
 Route::get('/manager/managerProfileEdit', function () {
     return view('manager/managerProfileEdit' , [
@@ -229,17 +183,8 @@ Route::get('/manager/managerProfileEdit', function () {
     ]);
 });
 
-Route::get('/manager/managerEditPropertyNotification', function () {
-    return view('manager/managerEditPropertyNotification' , [
-        'edit' => [//valueが情報,errMsgがエラー文
-            'day' => ['value' => '20220831' , 'errMsg' => ''],//届出日
-            'police' => ['value' => '曽根崎' , 'errMsg' => ''],//届け先警察署
-            'address' => ['value' => '大阪府大阪市生野区生野西2－5－14' , 'errMsg' => ''],//届け元店舗住所
-            'account' => ['value' => '鳥貴族' , 'errMsg' => ''],//届け元店舗
-            'tell' => ['value' => '01200000000' , 'errMsg' => ''],//届け元店舗電話番号
-        ]
-    ]);
-});
+Route::get('/manager/managerEditPropertyNotification', [ManagerEditPropertyNotificationController::class, 'show']);
+Route::post('/manager/managerEditPropertyNotification', [ManagerEditPropertyNotificationController::class, 'edit']);
 
 //落とし物登録確認画面
 Route::get('/manager/item_confirm', function () {

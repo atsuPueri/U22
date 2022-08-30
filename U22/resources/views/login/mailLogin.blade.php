@@ -14,7 +14,7 @@
             <h1>LOGIN</h1>
         </header>
         <main>
-            <form action="./test" method="post">
+            <form action="./mailLogin" method="post">
                 @csrf
                 <dl>
                     <dt><label for="mail">MAIL</label></dt>

@@ -5,12 +5,19 @@ namespace App\Http\Controllers\login;
 use App\Http\Controllers\Controller;
 use App\Library\User\usecase\SignIn\SignIn;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 class MailLoginController extends Controller
 {
-    public function show(Request $request)
+    public function show()
+    {
+        return view('login/mailLogin');
+    }
+
+    public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'mail' => [
@@ -39,14 +46,14 @@ class MailLoginController extends Controller
 
         $mail_address = $request->input('mail', '');
         $password = $request->input('password', '');
-        $is_login = $SignIn->signin_mail($mail_address, $password, SignIn::USER_TYPE_GENERAL);
+        $token_cookie = $SignIn->signin_mail($mail_address, $password, SignIn::USER_TYPE_GENERAL);
 
-        if (!$is_login) {
+        if (!$token_cookie) {
             return redirect('./login/mailLogin')
                 ->with('errMail', 'ログインに失敗しました、メールアドレス、またはパスワードが間違っています。');
         }
 
-        $result = DB::table('users_shop')
+        $result = DB::table('user_shop')
             ->limit(10)
             ->get();
 
@@ -61,7 +68,6 @@ class MailLoginController extends Controller
         return view('/user/search', [
             'data' => [
                 ["name" => "鳥貴族", "subName" => "梅田店", "img" => "kizoku.png"],
-                $map->all()
             ]
         ]);
     }

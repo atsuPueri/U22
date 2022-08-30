@@ -15,42 +15,42 @@
 
 
     <div id="editForm">
-        <form action="./managerProfileEdit">
+        <form action="./managerEditPropertyNotification" method="POST">
             @csrf
             <div id="editFile">
                 <div class="title">
                     <p>届出日</p>
                     <p class="errMsg">{{$edit['day']['errMsg']}}</p>
                 </div>
-                <input type="text" name="" value="{{$edit['day']['value']}}" class="edit">
+                <input type="text" name="day" value="{{$edit['day']['value']}}" class="edit">
             </div>
             <div class="editInput">
                 <div class="title">
                     <p>届け先警察署名</p>
                     <p class="errMsg">{{$edit['police']['errMsg']}}</p>
                 </div>
-                <input type="text" name="" value="{{$edit['police']['value']}}" class="edit">
+                <input type="text" name="police_address" value="{{$edit['police']['value']}}" class="edit">
             </div>
             <div class="editInput">
                 <div class="title">
                     <p>届け元店舗住所</p>
                     <p class="errMsg">{{$edit['address']['errMsg']}}</p>
                 </div>
-                <input type="text" name="" value="{{$edit['address']['value']}}" class="edit">
+                <input type="text" name="address" value="{{$edit['address']['value']}}" class="edit">
             </div>
             <div class="editInput">
                 <div class="title">
                     <p>届け元店舗名</p>
                     <p class="errMsg">{{$edit['account']['errMsg']}}</p>
                 </div>
-                <input type="text" name="" value="{{$edit['account']['value']}}" class="edit">
+                <input type="text" name="account" value="{{$edit['account']['value']}}" class="edit">
             </div>
             <div class="editInput">
                 <div class="title">
                     <p>届け元電話番号</p>
                     <p class="errMsg">{{$edit['tell']['errMsg']}}</p>
                 </div>
-                <input type="text" name="" value="{{$edit['tell']['value']}}" class="edit">
+                <input type="text" name="phone_number" value="{{$edit['tell']['value']}}" class="edit">
             </div>
             <div class="editInput">
                 <div class="title">
