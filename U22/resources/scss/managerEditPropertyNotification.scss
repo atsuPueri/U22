@@ -1,0 +1,94 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+header{
+    z-index: 7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #D1F6F9;
+    p{
+        text-align: center;
+        color: #767878;
+        padding-top: 30px;
+    }
+}
+
+#editForm{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 140px;
+    display: flex;
+    justify-content: center;
+    form{
+        width: 100%;
+        #editFile{
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 5%;
+            .title{
+                p{
+                    margin-bottom: 0;
+                }
+                display: flex;
+                .errMsg{
+                    height: 10px;
+                    color: red;
+                }
+            }
+        }
+        .editInput{
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 5%;
+            .title{
+                p{
+                    margin-bottom: 0;
+                }
+                display: flex;
+                .errMsg{
+                    height: 10px;
+                    color: red;
+                }
+            }
+            input[type="text"]{
+                height: 25px;
+                border-radius: 5px;
+                border: 1px solid rgb(116, 113, 113);
+                width: 100%;
+                &:focus{
+                    border: aqua 1px solid;
+                }
+            }
+        }
+        button{
+            padding: 10px;
+            width: 100%;
+            margin-top: 5%;
+            background-color: aqua;
+            border: none;
+        }
+
+        #downloadBtn{
+            background-color: #003333;
+            color: #e9eded;
+        }
+    }
+}
+
+#backBtn{
+    color: #e9eded;
+    display: block;
+    padding: 10px;
+    width: 85%;
+    background-color: #a5a6a7;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
+}

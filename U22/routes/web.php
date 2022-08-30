@@ -191,7 +191,7 @@ Route::get('/user/userProfileEdit', function () {
             'tell' => ['value' => '00000000000' , 'errMsg' => ''],//電話番号
             'pass' => ['value' => '12345678' , 'errMsg' => ''],//パスワード
             'icon' => ['value' => '' , 'errMsg' => '']//アイコン
-        ]     
+        ]
     ]);
 });
 
@@ -204,6 +204,18 @@ Route::get('/manager/managerProfileEdit', function () {
             'pass' => ['value' => '12345678' , 'errMsg' => ''],//パスワード
             'icon' => ['value' => '' , 'errMsg' => ''],//アイコン
             'address' => ['value' => '大阪府大阪市生野区生野西2－5－14' , 'errMsg' => ''],//住所
-        ]     
+        ]
+    ]);
+});
+
+Route::get('/manager/managerEditPropertyNotification', function () {
+    return view('manager/managerEditPropertyNotification' , [
+        'edit' => [//valueが情報,errMsgがエラー文
+            'day' => ['value' => '20220831' , 'errMsg' => ''],//届出日
+            'police' => ['value' => '曽根崎' , 'errMsg' => ''],//届け先警察署
+            'address' => ['value' => '大阪府大阪市生野区生野西2－5－14' , 'errMsg' => ''],//届け元店舗住所
+            'account' => ['value' => '鳥貴族' , 'errMsg' => ''],//届け元店舗
+            'tell' => ['value' => '01200000000' , 'errMsg' => ''],//届け元店舗電話番号
+        ]
     ]);
 });
