@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\DB;
 
 class SignInAdapter implements SignInPort
 {
-    public function signin_phone(string $phone_number, string $password, int $type): void
+    public function signin_phone(string $phone_number, string $password, int $type): bool
     {
-        $this->signin($phone_number, $password, $type, 'phone_number');
+        return $this->signin($phone_number, $password, $type, 'phone_number');
     }
 
-    public function signin_mail(string $mail_address, string $password, int $type): void
+    public function signin_mail(string $mail_address, string $password, int $type): bool
     {
-        $this->signin($mail_address, $password, $type, 'mail_address');
+        return $this->signin($mail_address, $password, $type, 'mail_address');
     }
 
-    private function signin (string $login_id, string $password, int $type, string $column): void
+    private function signin (string $login_id, string $password, int $type, string $column): bool
     {
         $table = '';
         if (SignIn::USER_TYPE_SHOP === $type) {
@@ -26,7 +26,7 @@ class SignInAdapter implements SignInPort
         } elseif (SignIn::USER_TYPE_GENERAL === $type) {
             $table = 'user_general';
         } else {
-            return;
+            return false;
         }
 
         $result = DB::table($table)
@@ -46,6 +46,8 @@ class SignInAdapter implements SignInPort
                 ]);
 
             $response->cookie('login_token', $token, time() + (60 * 60));
+            return true;
         }
+        return false;
     }
 }

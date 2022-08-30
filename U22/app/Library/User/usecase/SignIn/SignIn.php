@@ -16,13 +16,13 @@ class SignIn
         $this->port = $port;
     }
 
-    public function signin_phone(string $phone_number, string $password, int $type): void
+    public function signin_phone(string $phone_number, string $password, int $type): bool
     {
-        $this->port->signin_phone($phone_number, $password, $type);
+        return $this->port->signin_phone($phone_number, $password, $type);
     }
 
-    public function signin_mail(string $mail_address, string $password, int $type): void
+    public function signin_mail(string $mail_address, string $password, int $type): bool
     {
-        $this->port->signin_mail($mail_address, $password, $type);
+        return $this->port->signin_mail($mail_address, $password, $type);
     }
 }
