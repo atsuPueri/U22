@@ -15,9 +15,9 @@
     <div id="chat">
         @foreach ($chat as $content)
         @if($content['who'] == 'userImgComment')
-        <p class="{{$content['who']}}"><img src="../img/user/{{$content['comment']}}" alt=""></p>
+        <p class="{{$content['who']}}"><img src="{{asset('storage/images/user/'.$content['comment'])}}" alt=""></p>
         @elseif($content['who'] == 'managerImgComment')
-        <p class="{{$content['who']}}"><img src="../img/manager/{{$content['comment']}}" alt=""></p>
+        <p class="{{$content['who']}}"><img src="{{asset('storage/images/manager/'.$content['comment'])}}" alt=""></p>
         @else
         <p class="{{$content['who']}}">{{$content['comment']}}</p>
         @endif
