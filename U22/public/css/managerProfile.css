@@ -72,4 +72,13 @@ header p {
   background-color: #a5a6a7;
   text-align: center;
 }
+
+#profile #editPropertyBtn{
+  color: #e9eded;
+  margin-top: 32px;
+  display: block;
+  padding: 10px;
+  background-color: #003333;
+  text-align: center;
+}
 /*# sourceMappingURL=managerProfile.css.map */

@@ -17,7 +17,7 @@
 
     <div id="profile">
         <p id="icon"><img src="{{asset('storage/images/manager/'.$managerImg)}}" alt=""></p>
-    
+
 
         <div class="item">
             <p class="itemName">アカウント名</p>
@@ -27,12 +27,12 @@
             <p class="itemName">メールアドレス</p>
             <p>torikizoku@gmail.com</p>
         </div>
-    
+
         <div class="item">
             <p class="itemName">電話番号</p>
             <p>00000000000</p>
         </div>
-    
+
         <div class="item">
             <p class="itemName">住所</p>
             <p>{{$managerAddress}}</p>
@@ -42,9 +42,11 @@
             <p class="itemName">パスワード</p>
             <p>{{$managerPass}}</p>
         </div>
-    
-    
+
+
         <a href="./managerProfileEdit" id="editBtn">編集</a>
+
+        <a href="./managerEditPropertyNotification" id="editPropertyBtn">施設占有者拾得物件届出書</a>
 
         {{view('/manager/managerMenu', [
         'menu' => [
