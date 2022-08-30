@@ -45,7 +45,7 @@ class SignInAdapter implements SignInPort
                     'token' => $token
                 ]);
 
-            $response->cookie('user_id', $token, time() + (60 * 60));
+            $response->cookie('login_token', $token, time() + (60 * 60));
         }
     }
 }
