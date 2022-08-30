@@ -1,0 +1,83 @@
+@charset "UTF-8";
+.visuallyhidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 5% 1fr 5%;
+}
+
+main {
+  grid-column: 2/3;
+}
+main h1 {
+  margin: 10px 0;
+  font-size: x-large;
+}
+main #image h3 {
+  font-size: larger;
+}
+main #image img {
+  width: 40%;
+  border: 1px rgb(171, 171, 171) solid;
+  background-color: rgb(248, 248, 248);
+  padding: 0 10px;
+  margin: 10px calc(5% - 2px);
+}
+main #image input {
+  display: none;
+}
+main #category h3 {
+  font-size: larger;
+  margin: 10px 0;
+}
+main #category select {
+  padding: 0 18px 0 3px;
+  border-bottom: solid black 1px;
+  background: url(../img/下矢印.png) no-repeat right 3px center/12px auto;
+}
+main #date h3 {
+  font-size: larger;
+  margin: 10px 0;
+}
+main #date select {
+  text-align: center;
+  border-bottom: solid black 1px;
+  padding: 0 2px;
+}
+main #time h3 {
+  font-size: larger;
+  margin: 10px 0;
+}
+main #time select {
+  text-align: center;
+  border-bottom: solid black 1px;
+  padding: 0 2px;
+}
+main #detail h3 {
+  font-size: larger;
+  margin: 10px 0;
+}
+main #detail textarea {
+  resize: none;
+  width: 100%;
+  border: 1px rgb(171, 171, 171) solid;
+  background-color: rgb(248, 248, 248);
+}
+main button {
+  border: 1px rgb(171, 171, 171) solid;
+  background-color: rgb(248, 248, 248);
+  padding: 5px;
+  margin-top: 10px;
+  position: absolute;
+  right: 5%;
+}/*# sourceMappingURL=item_regi.css.map */
