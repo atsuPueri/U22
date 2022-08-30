@@ -13,7 +13,7 @@
     </header>
     @foreach ($chatList as $list)
     <div class="shopChat">
-        <img src="../img/manager/{{$list['managerImgName']}}" alt="">
+        <img src="{{asset('storage/images/manager/'.$list['managerImgName'])}}" alt="">
         <div class="chatTop">
             <p>{{$list['shopName']}}</p>
             <p class="newComment">{{$list['comment']}}</p>
