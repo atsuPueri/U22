@@ -2,7 +2,6 @@
 namespace App\Library\Chat\usecase\GetChatRoom;
 
 use App\Library\Chat\ChatRoom;
-use App\Library\Chat\Usecase\GetChatMessage\GetChatMessagePort;
 use Illuminate\Support\Facades\DB;
 
 class GetChatRoomAdapter implements GetChatRoomPort

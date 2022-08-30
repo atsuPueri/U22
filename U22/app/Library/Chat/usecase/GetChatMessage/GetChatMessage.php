@@ -20,6 +20,9 @@ class GetChatMessage
         return $this->port->get_all($chat_room_id);
     }
 
+    /**
+     * $send_type int 取得したい最後のメッセージタイプ
+     */
     public function get_last(int $chat_room_id, int $send_type): ChatMessage
     {
         return $this->port->get_last($chat_room_id, $send_type);
