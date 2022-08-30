@@ -16,7 +16,7 @@ class SignUpAdapter implements SignUpPort
         } else {
             return;
         }
-
+        $user_info['password'] = \password_hash($user_info['password'], \PASSWORD_DEFAULT);
         DB::table($table)->insert($user_info);
     }
 }
