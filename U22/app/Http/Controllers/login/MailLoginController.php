@@ -65,10 +65,6 @@ class MailLoginController extends Controller
             ];
         });
 
-        return view('/user/search', [
-            'data' => [
-                ["name" => "鳥貴族", "subName" => "梅田店", "img" => "kizoku.png"],
-            ]
-        ]);
+        return \redirect('/user/search');
     }
 }

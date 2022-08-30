@@ -169,6 +169,7 @@ Route::get('/manager/managerProfile', function () {
 });
 
 Route::get('/user/userProfileEdit', [UserProfileEditController::class, 'show']);
+Route::post('/user/userProfileEdit', [UserProfileEditController::class, 'edit']);
 
 Route::get('/manager/managerProfileEdit', function () {
     return view('manager/managerProfileEdit' , [

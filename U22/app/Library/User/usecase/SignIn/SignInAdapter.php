@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class SignInAdapter implements SignInPort
 {
-    public function signin_phone(string $phone_number, string $password, int $type)
+    public function signin_phone(string $phone_number, string $password, int $type): bool
     {
         return $this->signin($phone_number, $password, $type, 'phone_number');
     }
 
-    public function signin_mail(string $mail_address, string $password, int $type)
+    public function signin_mail(string $mail_address, string $password, int $type): bool
     {
         return $this->signin($mail_address, $password, $type, 'mail_address');
     }
