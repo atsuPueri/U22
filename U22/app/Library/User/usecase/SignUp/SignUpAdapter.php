@@ -11,9 +11,9 @@ class SignUpAdapter implements SignUpPort
     /**
      * ユーザー情報登録。
      */
-    public function signup(User $user): bool
+    public function signup(): bool
     {
-        $password = Hash::make($user->userPassword);
+        $password = Hash::make($user["userPassword"]);
 
         $sql_signup = DB::table('user')->insert([
             'password' => $password,
