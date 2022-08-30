@@ -157,10 +157,6 @@ Route::get('/user/search', function(){
     ]);
 });
 
-Route::get('/user/search', function(){
-    return view('user/search');
-});
-
 //検索結果画面
 Route::get('/user/search_result', function(){
     return view('user/search_result',[
