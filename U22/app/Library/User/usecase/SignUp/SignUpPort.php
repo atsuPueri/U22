@@ -5,5 +5,5 @@ use App\Library\User\User;
 
 interface SignUpPort
 {
-    public function signup(User $user): bool;
+    public function signup(array $user_info, int $type): void;
 }

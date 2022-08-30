@@ -6,13 +6,16 @@ use App\Library\User\usecase\SignUp\SignUpPort;
 
 class SignUp
 {
+    const USER_TYPE_GENERAL = 0;
+    const USER_TYPE_SHOP = 1;
+
     public function __construct(SignUpPort $port)
     {
         $this->port = $port;
     }
 
-    public function execute(User $user): bool
+    public function execute(array $user_info, int $type): void
     {
-        return $this->port->signup($user);
+        $this->port->signup($user_info, $type);
     }
 }
