@@ -21,6 +21,7 @@ class GetLostItemAdapter implements GetLostItemPort
             $result->pickup_date,
             $result->pickup_user_id,
             $result->police_station_address,
+            $result->feature,
         );
     }
 
@@ -42,6 +43,7 @@ class GetLostItemAdapter implements GetLostItemPort
                 $value->pickup_date,
                 $value->pickup_user_id,
                 $value->police_station_address,
+                $value->feature
             );
         });
         return $map->all();
@@ -97,6 +99,7 @@ class GetLostItemAdapter implements GetLostItemPort
                 $value->pickup_date,
                 $value->pickup_user_id,
                 $value->police_station_address,
+                $value->feature
             );
         });
         return $map->all();

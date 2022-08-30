@@ -21,6 +21,7 @@ class LostItem
         ?int $pickup_date = null,
         ?int $pickup_user_id = null,
         ?string $police_station_address = null,
+        string $feature = ''
     ) {
         $this->id = $id;
         $this->shop_id = $shop_id;
@@ -42,6 +43,7 @@ class LostItem
             $info['acquisition_date'],
             $info['pickup_date'] ?? null,
             $info['pickup_user_id'] ?? null,
+            $info['feature'] ?? '',
             $info['police_station_address'] ?? null,
         );
     }
