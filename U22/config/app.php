@@ -198,7 +198,9 @@ return [
 
         // ここからLibraryクラスの登録
         App\Providers\GetLostItemProvider::class,
-
+        App\Providers\GetChatRoomProvider::class,
+        App\Providers\GetChatMessageProvider::class,
+        App\Providers\SendChatProvider::class,
     ],
 
     /*
