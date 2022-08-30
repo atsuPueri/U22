@@ -8,7 +8,7 @@
         <p class="{{$menu['lostList']['name']}}">忘れ物一覧</p>
     </div>
     <div class="menuBtn">
-        <a href=""><img src="../img/parts/{{$menu['resume']['img']}}" alt=""></a>
+        <a href="./managerProfile"><img src="../img/parts/{{$menu['resume']['img']}}" alt=""></a>
         <p class="{{$menu['resume']['name']}}">プロフィール</p>  
     </div>
 </nav>
