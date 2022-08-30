@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\login\MailLoginController;
+use App\Http\Controllers\User\userCheckController;
+use App\Http\Controllers\User\UserInputController;
+use App\Http\Controllers\User\UserRegistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -170,27 +173,12 @@ Route::get('/login/telLogin', function () {
 });
 
 // 新規登録画面
-Route::get('/user/userInput', function () {
-    return view('user/userInput',[
-        'errName' => 'ここに名前のエラー',
-        'errTel' => 'ここに電話番号のエラー',
-        'errMail' => 'ここにメールアドレスのエラー',
-        'errPassword' => 'ここにPasswordのエラー',
-    ]);
-});
+Route::get('/user/userInput', [UserInputController::class, 'show']);
+Route::post('/user/userInput', [UserInputController::class, 'input']);
 
-Route::get('/user/userCheck', function () {
-    return view('user/userCheck',[
-        'userName' => 'ここに名前',
-        'userTel' => 'ここに電話番号',
-        'userMail' => 'ここにメールアドレス',
-        'userPassword' => 'ここにPassword',
-    ]);
-});
+Route::get('/user/userCheck', [UserCheckController::class, 'show']);
 
-Route::get('/user/userRegist', function () {
-    return view('user/userRegist');
-});
+Route::post('/user/userRegist', [UserRegistController::class, 'show']);
 
 Route::get('/user/userProfile', function () {
     return view('user/userProfile' , [

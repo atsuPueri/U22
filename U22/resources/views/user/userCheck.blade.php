@@ -22,6 +22,7 @@
 
             <p>次の内容で登録を完了します。</p>
             <form action="./userRegist" method="post">
+                @csrf
                 <dl>
                     <dt>氏名</dt>
                     <dd><input type="text" name="userName" value="{{$userName}}" readonly></dd>

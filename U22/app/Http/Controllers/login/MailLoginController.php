@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Library\User\usecase\SignIn\SignIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class MailLoginController extends Controller
 {
-    public function login(Request $request)
+    public function show(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'mail' => [
@@ -44,6 +45,24 @@ class MailLoginController extends Controller
             return redirect('./login/mailLogin')
                 ->with('errMail', 'ログインに失敗しました、メールアドレス、またはパスワードが間違っています。');
         }
-        return 
+
+        $result = DB::table('users_shop')
+            ->limit(10)
+            ->get();
+
+        $map = $result->map(function ($item) {
+            return [
+                'name' => $item->shop_name,
+                'subName' => $item->address,
+                'img' => $item->icon_name,
+            ];
+        });
+
+        return view('/user/search', [
+            'data' => [
+                ["name" => "鳥貴族", "subName" => "梅田店", "img" => "kizoku.png"],
+                $map->all()
+            ]
+        ]);
     }
 }

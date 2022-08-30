@@ -20,7 +20,8 @@
                 <li>登録完了</li>
             </ul>
 
-            <form action="./userCheck" method="post">
+            <form action="./userInput" method="post">
+                @csrf
                 <dl>
                     <dt><label for="userName">氏名<span>必須</span></label></dt>
                     <dd><input type="text" name="userName" id="userName" value=""></dd>
