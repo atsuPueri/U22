@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
-
+use App\Http\Controllers\login\MailLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -158,6 +158,8 @@ Route::get('/login/mailLogin', function () {
         'errPass' => 'ここにPasswordエラー',
     ]);
 });
+
+Route::any('/login/test', [MailLoginController::class, 'show']);
 
 // 電話番号
 Route::get('/login/telLogin', function () {

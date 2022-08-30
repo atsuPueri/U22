@@ -14,15 +14,16 @@
             <h1>LOGIN</h1>
         </header>
         <main>
-            <form action="#" method="post">
+            <form action="./test" method="post">
+                @csrf
                 <dl>
                     <dt><label for="mail">MAIL</label></dt>
                     <dd><input type="text" name="mail" id="mail" value=""></dd>
-                    <dd class="errMsg">{{$errMail}}</dd>
+                    <dd class="errMsg">{{session('errMail')}}</dd>
 
                     <dt><label for="password">PASSWORD</label></dt>
                     <dd><input type="text" name="password" id="password" value=""></dd>
-                    <dd class="errMsg">{{$errPass}}</dd>
+                    <dd class="errMsg">{{session('errPass')}}</dd>
 
                 </dl>
                 <button type="submit" name="" value="">LOGIN</button>
