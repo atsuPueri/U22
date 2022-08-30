@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Library\Chat\usecase\GetChatMessage\GetChatMessage;
 use App\Library\Chat\usecase\GetChatRoom\GetChatRoom;
+use App\Library\Chat\ChatRoom;
 use App\Library\Chat\usecase\GetChatRoom\GetChatRoomAdapter;
 use Illuminate\Support\Collection;
 
@@ -12,24 +13,26 @@ class UserChatListController extends Controller
 {
     public function show()
     {
-        /** @var GetChatMessage */
-        // $GetChatMessage = \resolve(GetChatMessage::class);
-        // $GetChatRoom = new GetChatRoom(new GetChatRoomAdapter);
+
 
         /** @var GetChatRoom */
         $GetChatRoom = \resolve(GetChatRoom::class);
 
         $room_array  = $GetChatRoom->get_all(1, GetChatRoom::USER_TYPE_GENERAL);
 
-        $map = collect($room_array)->map(function ($ChatRoom) {
+        $map = collect($room_array)->map(function (ChatRoom $ChatRoom) {
 
-            $user_general =  $ChatRoom->to_UserGeneral();
+            /** @var GetChatMessage */
+            $GetChatMessage = \resolve(GetChatMessage::class);
+
+            $user_shop =  $ChatRoom->to_UserShop();
             return [
-                'managerId' => $user_general->get_id(),
-                'managerImgName' => 'kizoku.png',
-                'shopName' => '鳥貴族',//店名
-                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-                'commentNum' => '1',//コメント数
+                'managerId' => $user_shop->get_id(),
+                'managerImgName' => $user_shop->get_icon_name(),
+                'shopName' => $user_shop->get_shop_name(),//店名
+
+                'comment' => $GetChatMessage->get_last($ChatRoom->room_id, GetChatMessage::SEND_TYPE_SHOP),//最新のコメント表示
+                'commentNum' => count($GetChatMessage->get_all($ChatRoom->room_id)),//コメント数
             ];
         });
 
