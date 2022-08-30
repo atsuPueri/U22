@@ -201,6 +201,7 @@ return [
         App\Providers\GetChatRoomProvider::class,
         App\Providers\GetChatMessageProvider::class,
         App\Providers\SendChatProvider::class,
+        App\Providers\SignInProvider::class,
     ],
 
     /*
