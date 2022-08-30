@@ -34,6 +34,6 @@
         </form>
     </div>
 
-    <script src="../../resources/js/chat.js"></script>
+    <script src="../js/chat.js"></script>
 </body>
 </html>
