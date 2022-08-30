@@ -158,3 +158,52 @@ Route::get('/login', function () {
         'errPass' => 'ここにPasswordエラー',
     ]);
 });
+
+Route::get('/user/userProfile', function () {
+    return view('user/userProfile' , [
+        'userImg' => 'uchuneko.png',//画像名
+        'userName' => 'uchuneko',//ユーザー名
+        'userMail' => 'uchuneko@gmail.com',//ユーザー名
+        'userTell' => '00000000000',//電話番号
+        'userId' => '0',//ユーザーID(いるかわからんけど一応)
+        'userPass' => '•••••••••'//パスワード(伏字になってる)
+    ]);
+});
+
+
+Route::get('/manager/managerProfile', function () {
+    return view('manager/managerProfile' , [
+        'managerImg' => 'kizoku.png',//画像名
+        'managerName' => 'uchuneko',//ユーザー名
+        'managerMail' => 'uchuneko@gmail.com',//ユーザー名
+        'managerTell' => '00000000000',//電話番号
+        'managerAddress' => '大阪府大阪市生野区生野西2－5－14',//住所
+        'managerId' => '0',//ユーザーID(いるかわからんけど一応)
+        'managerPass' => '•••••••••'//パスワード(伏字になってる)
+    ]);
+});
+
+Route::get('/user/userProfileEdit', function () {
+    return view('user/userProfileEdit' , [
+        'edit' => [//valueが情報,errMsgがエラー文
+            'account' => ['value' => '宇宙猫' , 'errMsg' => ''],//アカウント名
+            'mail' => ['value' => 'uchuneko@gmail' , 'errMsg' => ''],//メアド
+            'tell' => ['value' => '00000000000' , 'errMsg' => ''],//電話番号
+            'pass' => ['value' => '12345678' , 'errMsg' => ''],//パスワード
+            'icon' => ['value' => '' , 'errMsg' => '']//アイコン
+        ]     
+    ]);
+});
+
+Route::get('/manager/managerProfileEdit', function () {
+    return view('manager/managerProfileEdit' , [
+        'edit' => [//valueが情報,errMsgがエラー文
+            'account' => ['value' => '鳥貴族' , 'errMsg' => ''],//アカウント名
+            'mail' => ['value' => 'torikizoku@gmail' , 'errMsg' => ''],//メアド
+            'tell' => ['value' => '00000000000' , 'errMsg' => ''],//電話番号
+            'pass' => ['value' => '12345678' , 'errMsg' => ''],//パスワード
+            'icon' => ['value' => '' , 'errMsg' => ''],//アイコン
+            'address' => ['value' => '大阪府大阪市生野区生野西2－5－14' , 'errMsg' => ''],//住所
+        ]     
+    ]);
+});
