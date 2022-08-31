@@ -48,9 +48,9 @@
             <div class="editInput">
             <div class="title">
                     <p>パスワード</p>
-                    <p>変更したい場合にのみ入力してください</p>
                     <p class="errMsg">{{$edit['pass']['errMsg']}}</p>
-                </div>
+            </div>
+                <p id="warn">変更したい場合にのみ入力してください</p>
                 <input type="password" name="password" value="{{$edit['pass']['value']}}" class="edit">
             </div>
             <button type="submit" name="editBtn">変更する</button>
