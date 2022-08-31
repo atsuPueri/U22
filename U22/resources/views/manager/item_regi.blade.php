@@ -57,8 +57,8 @@
 
                 {{-- あつが追加したのでレイアウト崩れてるかも --}}
                 <section>
-                    <h3>現金がいくらあったか なければ記載不要</h3>
-                    <input type="number" name="price">
+                    <p>現金がいくらあったか なければ記載不要</p>
+                    <input type="number" name="price" id="price">
                 </section>
 
                 <section id="detail">
