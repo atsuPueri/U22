@@ -52,19 +52,6 @@ class MailLoginController extends Controller
             return redirect('./login/mailLogin')
                 ->with('errMail', 'ログインに失敗しました、メールアドレス、またはパスワードが間違っています。');
         }
-
-        $result = DB::table('user_shop')
-            ->limit(10)
-            ->get();
-
-        $map = $result->map(function ($item) {
-            return [
-                'name' => $item->shop_name,
-                'subName' => $item->address,
-                'img' => $item->icon_name,
-            ];
-        });
-
         return \redirect('/user/search');
     }
 }
