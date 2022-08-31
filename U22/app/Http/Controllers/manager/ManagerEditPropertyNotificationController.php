@@ -55,8 +55,20 @@ class ManagerEditPropertyNotificationController extends Controller
             new PDFText(109, 56, '〇', ['font_size' => 15]),
             new PDFText(109, 63, '〇', ['font_size' => 15]),
 
-            new PDFText(171, 60, '〇', ['font_size' => 15]),
-            new PDFText(184, 60, '〇', ['font_size' => 15]),
+            new PDFText(177, 59, '〇', ['font_size' => 17]),
+            new PDFText(190, 59, '〇', ['font_size' => 17]),
+
+            new PDFText(37, 86, '￥１００', ['font_size' => 14]),
+            new PDFText(32, 102, '￥１０００', ['font_size' => 14]),
+            new PDFText(27, 118, '￥１００００', ['font_size' => 14]),
+            new PDFText(27 - 5, 118 + 16, '￥１０００００', ['font_size' => 14]),
+
+            new PDFText(59, 87, '長財布'),
+            new PDFText(59, 87 + 8, '指輪'),
+            new PDFText(59, 87 + 16, '指輪'),
+            new PDFText(59, 87 + 24, '指輪'),
+            new PDFText(59, 87 + 32, '指輪'),
+
         ], false);
     }
 
