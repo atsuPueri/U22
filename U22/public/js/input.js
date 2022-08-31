@@ -1,4 +1,3 @@
-console.log('aa');
 let address = document.getElementById('address');
 let user = document.getElementById('user');
 let manager = document.getElementById('manager');
