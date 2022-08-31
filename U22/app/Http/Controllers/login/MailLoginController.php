@@ -19,6 +19,7 @@ class MailLoginController extends Controller
 
     public function login(Request $request)
     {
+        // \dd($request->all());
         $validator = Validator::make($request->all(), [
             'mail' => [
                 'required',
