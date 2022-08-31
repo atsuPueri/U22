@@ -36,6 +36,11 @@
                     <dt>パスワード</dt>
                     <dd><input type="text" name="userPassword" value="{{$userPassword}}" readonly></dd>
 
+                    <div id="address">
+                        <dt>住所</dt>
+                        <dd><input type="text" name="userAddress" value="{{$userAddress}}" readonly id="addressInput"></dd>
+                    </div>
+
                     <dt>使用形態</dt>
                     <dd><input type="text" name="userPassword" value="{{$profession}}" readonly></dd>
 
@@ -45,5 +50,7 @@
             </form>
         </main>
     </div>
+
+    <script src="../js/inputCheck.js"></script>
 </body>
 </html>
