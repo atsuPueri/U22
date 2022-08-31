@@ -39,14 +39,21 @@
                     <dd><input type="text" name="userPassword" id="userPassword" value=""></dd>
                     <dd class="errMsg">{{$errPassword}}</dd>
 
+                    <div id="address">
+                        <dt><label for="userPassword">住所<span>必須</span></label></dt>
+                        <dd><input type="text" name="userAddress" id="userAddress" value=""></dd>
+                    </div>
+
                     <dt><label for="profession">使用形態</label></dt>
-                    <dd><input type="radio" name="profession" value="user" checked>ユーザー</dd>
-                    <dd><input type="radio" name="profession" value="manager">店舗</dd>
+                    <dd><input type="radio" name="profession" value="user" id="user" checked>ユーザー</dd>
+                    <dd><input type="radio" name="profession" value="manager" id="manager">店舗</dd>
 
                 </dl>
                 <button type="submit" name="" value="">確認画面へ</button>
             </form>
         </main>
     </div>
+
+    <script src="../js/input.js"></script>
 </body>
 </html>
