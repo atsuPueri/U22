@@ -4,7 +4,7 @@ use App\Library\User\User;
 
 class UserShop extends User
 {
-    public int $shop_name;
+    public string $shop_name;
     public string $address;
 
     public function __construct(array $user_info)
