@@ -14,6 +14,7 @@ class UserCheckController extends Controller
             'tel',
             'mail',
             'password',
+            'profession'
         ]);
 
         return view('user/userCheck',[
@@ -21,6 +22,7 @@ class UserCheckController extends Controller
             'userTel' => session('tel'),
             'userMail' => session('mail'),
             'userPassword' => \str_repeat('●', \strlen(session('password'))),
+            'profession' => session('profession'),
         ]);
     }
 

@@ -56,6 +56,10 @@ header p {
   margin-bottom: 0;
 }
 
+#editForm form .editInput #warn {
+  font-size: 14px;
+}
+
 #editForm form #editFile .title .errMsg {
   height: 10px;
   color: red;

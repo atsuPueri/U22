@@ -36,6 +36,9 @@
                     <dt>パスワード</dt>
                     <dd><input type="text" name="userPassword" value="{{$userPassword}}" readonly></dd>
 
+                    <dt>使用形態</dt>
+                    <dd><input type="text" name="userPassword" value="{{$profession}}" readonly></dd>
+
                 </dl>
                 <button type="submit" name="" value="">登録完了</button>
                 <a href="./userInput">入力内容を変更</a>

@@ -69,5 +69,6 @@ class MailLoginController extends Controller
             return \redirect('/user/search');
         }
         return \redirect('/manager/managerLostList');
+
     }
 }
