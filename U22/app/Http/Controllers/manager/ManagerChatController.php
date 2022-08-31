@@ -13,8 +13,8 @@ class ManagerChatController extends Controller
 {
     public function show(Request $request)
     {
-        $chat_room_id = $request->input('');
-        $request->session()->flash('room_id', $chat_room);
+        $chat_room_id = $request->input('') ?? \session('room_id');
+        $request->session()->flash('room_id', $chat_room_id);
 
         /** @var GetChatRoom */
         $GetChatRoom = \resolve(GetChatRoom::class);
@@ -69,6 +69,7 @@ class ManagerChatController extends Controller
             $Send->save_image($chat_room_id, $user->id, 2, 'chatImg');
             $Send->save_message($chat_room_id, $user->id, 0, 'chatComment');
         }
-        return $this->show($request);
+        return \redirect('/manager/managerChat')
+            ->with('room_id', $chat_room_id);
     }
 }

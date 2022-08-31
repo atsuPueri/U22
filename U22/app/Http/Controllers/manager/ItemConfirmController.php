@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Library\Helper\GetLostItemType;
 use App\Library\Helper\GetNowLoginUser;
 use App\Library\LostItem\usecase\GetLostItem\GetLostItem;
+use App\Library\User\UserShop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,13 +16,23 @@ class ItemConfirmController extends Controller
     public function show(Request $request)
     {
         $btn = $request->input('btn');
+
+        /** @var GetNowLoginUser */
+        $GetUser = new GetNowLoginUser();
+        /** @var UserShop */
+        $user = $GetUser->get(GetNowLoginUser::TYPE_SHOP);
+
+        if (null === $user) {
+            return redirect('/login/mailLogin');
+        }
+
         if ($btn == 'on' || $btn == 'back') {
             if ($btn == 'back') {
                 return \redirect('manager/item_regi');
             }
 
             DB::table('lost_item')->insert([
-                'shop_id' => (new GetNowLoginUser)->get(GetNowLoginUser::TYPE_SHOP)->id,
+                'shop_id' => $user->id,
                 'genre_id' => \session('c'),
                 'name' => GetLostItemType::get_id_to_categorys()[\session('c')],
                 'acquisition_date' => \session('t'),

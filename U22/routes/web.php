@@ -41,7 +41,7 @@ Route::get('/', function () {
 
 Route::get('/user/userChatList', [UserChatListController::class, 'show']);
 Route::get('/user/userChat', [UserChatController::class, 'show']);
-Route::get('/user/userChat', [UserChatController::class, 'show']);
+Route::post('/user/userChat', [UserChatController::class, 'send']);
 
 Route::get('/manager/managerChatList', [ManagerChatListControler::class, 'show']);
 Route::get('/manager/managerChat', [ManagerChatController::class, 'show']);

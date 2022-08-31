@@ -6,13 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Library\Chat\ChatMessage;
 use App\Library\Chat\usecase\GetChatMessage\GetChatMessage;
 use App\Library\Chat\usecase\GetChatRoom\GetChatRoom;
+use App\Library\Helper\GetNowLoginUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class UserChatController extends Controller
 {
     public function show(Request $request)
     {
-        $chat_room_id = $request->input('');
+        $chat_room_id = $request->input('') ?? \session('room_id');
+        $request->session()->flash('room_id', $chat_room_id);
+
+        if ($chat_room_id === null) {
+            return \redirect('/user/userChatList');
+        }
 
         /** @var GetChatRoom */
         $GetChatRoom = \resolve(GetChatRoom::class);
@@ -48,4 +55,28 @@ class UserChatController extends Controller
         ]);
     }
 
+    public function send(Request $request)
+    {
+        /** @var SendChat */
+        $Send = \resolve(SendChat::class);
+
+        /** @var GetNowLoginUser */
+        $GetUser = new GetNowLoginUser();
+
+        /** @var UserGeneral */
+        $user = $GetUser->get(GetNowLoginUser::TYPE_GENERAL);
+        if (null === $user) {
+            return redirect('/login/mailLogin');
+        }
+
+        $chat_room_id = \session('room_id');
+        if (null !== $chat_room_id) {
+
+            $Send->save_image($chat_room_id, $user->id, 3, 'chatImg');
+            $Send->save_message($chat_room_id, $user->id, 1, 'chatComment');
+        }
+
+        return \redirect('/user/userChat')
+            ->with('room_id', $chat_room_id);
+    }
 }

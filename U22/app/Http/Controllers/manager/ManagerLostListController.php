@@ -33,7 +33,7 @@ class ManagerLostListController extends Controller
                 "id" => $item->id,
                 "date" => $item->acquisition_date,
                 "name" => $item->name,
-                "genre" => GetLostItemType::get_id_to_categorys()[$item->id],
+                "genre" => GetLostItemType::get_id_to_categorys()[$item->genre_id],
                 "state" => $item->pickup_date === null ? '有' : '無',
             ];
         });

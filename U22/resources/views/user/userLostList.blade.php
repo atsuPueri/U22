@@ -61,7 +61,7 @@
                         <p>{{$value["genre"];}}</p>
                         <p class="state">{{$value["state"];}}</p>
                             {{-- チャット画面へ --}}
-                        <a href="#" class="chatNavButton">お問い合せ</a>
+                        <a href="./userChat?user_id={{$value['managerId']}}" class="chatNavButton">お問い合せ</a>
                     </div>
                 @endforeach
             {{-- 繰り返し処理 End --}}

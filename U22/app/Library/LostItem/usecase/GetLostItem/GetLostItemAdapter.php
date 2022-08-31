@@ -57,10 +57,10 @@ class GetLostItemAdapter implements GetLostItemPort
             if (array_key_exists($column, $search_info)) {
                 if (is_array($search_info[$column])) {
                     foreach ($search_info[$column] as $value) {
-                        $db->where($column, '=', $value, 'or');
+                        $db->where($column, '=', $value, 'and');
                     }
-                } elseif (is_int($search_info[$column])) {
-                    $db->where($column, '=', $search_info[$column], 'or');
+                } elseif (\is_numeric($search_info[$column])) {
+                    $db->where($column, '=', $search_info[$column], 'and');
                 }
             }
         };
