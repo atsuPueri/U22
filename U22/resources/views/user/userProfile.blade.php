@@ -17,7 +17,7 @@
 
     <div id="profile">
         <p id="icon"><img src="{{asset('storage/images/user/'.$userImg)}}" alt=""></p>
-    
+
 
         <div class="item">
             <p class="itemName">アカウント名</p>
@@ -27,7 +27,7 @@
             <p class="itemName">メールアドレス</p>
             <p>{{$userMail}}</p>
         </div>
-    
+
         <div class="item">
             <p class="itemName">電話番号</p>
             <p>{{$userTell}}</p>
@@ -37,8 +37,8 @@
             <p class="itemName">パスワード</p>
             <p>{{$userPass}}</p>
         </div>
-    
-        <a href="./userProfileEdit?userId={{$userId}}" id="editBtn">編集</a>
+
+        <a href="./userProfileEdit" id="editBtn">編集</a>
     </div>
 
     {{view('/user/userMenu', [

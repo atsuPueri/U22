@@ -44,11 +44,20 @@ class UserProfileEditController extends Controller
             return redirect('/login/mailLogin');
         }
 
-        $update = [
-            'display_name' => $request->input('accountName'),
-            'mail_address' => $request->input('mail'),
-            'phone_number' => $request->input('tell'),
-        ];
+        $update = [];
+
+        // 画像アップの処理
+        $file_key = 'icon';
+        if ($request->hasFile($file_key)) {
+            $file = $request->file($file_key);
+            $path = $file->store("images\user\\", 'public');
+            $update['icon_name'] = $path;
+        }
+
+        $update['display_name'] = $request->input('accountName');
+        $update['mail_address'] = $request->input('mail');
+        $update['phone_number'] = $request->input('tell');
+
 
         // 空の時以外はパスワードを変更する
         if ($request->input('password') !== null && $request->input('password') !== '') {
@@ -57,6 +66,6 @@ class UserProfileEditController extends Controller
 
         DB::table('user_general')->update($update);
 
-        return redirect('./userProfile');
+        return redirect('/user/userProfile');
     }
 }

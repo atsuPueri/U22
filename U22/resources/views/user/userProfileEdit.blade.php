@@ -15,7 +15,7 @@
 
 
     <div id="editForm">
-        <form action="./userProfileEdit" method="POST">
+        <form action="./userProfileEdit" method="POST" enctype="multipart/form-data">
             @csrf
             <div id="editFile">
             <div class="title">
