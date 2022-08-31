@@ -11,7 +11,7 @@
         <a href="./managerChatList">戻る</a>
         <p><img src="../img/user/{{$userImgName}}" alt="">{{$userName}}</p>
     </header>
-    
+
     <div id="chat">
         @foreach ($chat as $content)
         @if($content['who'] == 'userImgComment')
@@ -29,11 +29,11 @@
     <div id="chatForm">
         <form action="./managerChat">
             <input type="file" name="chatImg" id="chatImg">
-            <input type="text" name="chatComment" id="chatComment" value="{{$input}}">
+            <input type="text" name="chatComment" id="chatComment" value="">
             <button type="submit">送信</button>
         </form>
     </div>
-    
+
     <script src="../js/chat.js"></script>
 </body>
 </html>

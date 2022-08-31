@@ -40,19 +40,7 @@ Route::get('/user/userChat', [UserChatController::class, 'show']);
 
 
 Route::get('/manager/managerChat', function () {
-    return view('manager/managerChat' , [
-        'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
-        'userName' => '宇宙猫',//ユーザー名
-        'chat' => [
-            ['comment' => 'すみません。今日そちらで20時くらいに食事をしたのですがそちらにハンカチを落としていきませんでしたか？' , 'who' => 'userComment'],
-            ['comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？' , 'who' => 'managerComment'],
-            ['comment' => '水色とグレーのミレミアムファルコン号のハンカチです' , 'who' => 'userComment'],
-            ['comment' => 'handkerchief.jpg' , 'who' => 'userImgComment'],
-            ['comment' => 'handkerchief.jpg' , 'who' => 'managerImgComment'],
-            ['comment' => 'こちらでしょうか？' , 'who' => 'managerComment'],
-        ],//コメントは二次元配列で、画像はcommentに画像名を、whoはclassを書くとき用(ユーザー：userComment , 店：managerComment , ユーザー画像：userImgComment , 店画像：managerImgComment)
-        'input' => ''//いるかわからんけどインプットの内容
-    ]);
+
 });
 
 // 庶民落とし物
