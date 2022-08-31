@@ -39,6 +39,10 @@
                     <dd><input type="text" name="userPassword" id="userPassword" value=""></dd>
                     <dd class="errMsg">{{$errPassword}}</dd>
 
+                    <dt><label for="profession">使用形態</label></dt>
+                    <dd><input type="radio" name="profession" value="user" checked>ユーザー</dd>
+                    <dd><input type="radio" name="profession" value="manager">店舗</dd>
+
                 </dl>
                 <button type="submit" name="" value="">確認画面へ</button>
             </form>
