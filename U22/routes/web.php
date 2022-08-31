@@ -148,10 +148,9 @@ Route::post('/login/telLogin', [TelLoginController::class, 'login']);
 // 新規登録画面
 Route::get('/user/userInput', [UserInputController::class, 'show']);
 Route::post('/user/userInput', [UserInputController::class, 'input']);
-
 Route::get('/user/userCheck', [UserCheckController::class, 'show']);
-
 Route::post('/user/userRegist', [UserRegistController::class, 'show']);
+
 
 Route::get('/user/userProfile', [userProfileController::class, 'show']);
 
@@ -168,6 +167,7 @@ Route::get('/manager/managerProfile', function () {
     ]);
 });
 
+// プロフィール編集
 Route::get('/user/userProfileEdit', [UserProfileEditController::class, 'show']);
 Route::post('/user/userProfileEdit', [UserProfileEditController::class, 'edit']);
 
