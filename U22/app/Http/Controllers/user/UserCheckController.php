@@ -18,6 +18,7 @@ class UserCheckController extends Controller
             'profession'
         ]);
 
+
         return view('user/userCheck',[
             'userName' => session('name'),
             'userTel' => session('tel'),
