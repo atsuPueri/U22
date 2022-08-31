@@ -14,7 +14,7 @@ class UserCheckController extends Controller
             'tel',
             'mail',
             'password',
-            'Address',
+            'address',
             'profession'
         ]);
 
