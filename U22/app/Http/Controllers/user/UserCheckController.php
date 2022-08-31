@@ -14,6 +14,7 @@ class UserCheckController extends Controller
             'tel',
             'mail',
             'password',
+            'profession'
         ]);
 
         \dump(session('password'));
@@ -22,6 +23,7 @@ class UserCheckController extends Controller
             'userTel' => session('tel'),
             'userMail' => session('mail'),
             'userPassword' => \str_repeat('●', \strlen(session('password'))),
+            'profession' => session('profession'),
         ]);
     }
 
