@@ -34,7 +34,7 @@ class SignInAdapter implements SignInPort
             ->where($column, '=', $login_id)
             ->first();
 
-        if (password_verify($password, $result->password)) {
+        if (null !== $result &&  password_verify($password, $result->password)) {
 
             $token = bin2hex(random_bytes(10));
 

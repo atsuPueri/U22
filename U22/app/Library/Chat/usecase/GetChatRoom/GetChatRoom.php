@@ -24,4 +24,10 @@ class GetChatRoom
     {
         return $this->port->get_all($user_id, $user_type);
     }
+
+    public function get_room(int $id): ?ChatRoom
+    {
+        return $this->port->get_room($id);
+    }
+
 }

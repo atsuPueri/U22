@@ -24,4 +24,17 @@ class GetChatRoomAdapter implements GetChatRoomPort
 
         return $map->all();
     }
+
+    public function get_room(int $id): ?ChatRoom
+    {
+        $result = DB::table('chat_room')
+            ->where('id', '=', $id)
+            ->first();
+
+        if (null === $result) {
+            return null;
+        }
+        return new ChatRoom($result->id, $result->user_general_id, $result->user_shop_id);
+    }
+
 }

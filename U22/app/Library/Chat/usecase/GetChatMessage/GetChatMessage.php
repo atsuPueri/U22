@@ -15,6 +15,9 @@ class GetChatMessage
         $this->port = $port;
     }
 
+    /**
+     * @return ChatMessage[]
+     */
     public function get_all(int $chat_room_id): array
     {
         return $this->port->get_all($chat_room_id);

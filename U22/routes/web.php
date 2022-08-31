@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\login\MailLoginController;
 use App\Http\Controllers\login\TelLoginController;
+use App\Http\Controllers\manager\ManagerChatListControler;
 use App\Http\Controllers\manager\ManagerEditPropertyNotificationController;
 use App\Http\Controllers\manager\ManagerLostListController;
+use App\Http\Controllers\User\UserChatController;
 use App\Http\Controllers\User\UserChatListController;
 use App\Http\Controllers\User\userCheckController;
 use App\Http\Controllers\User\UserInputController;
@@ -32,50 +34,9 @@ Route::get('/', function () {
 });
 
 Route::get('/user/userChatList', [UserChatListController::class, 'show']);
+Route::get('/manager/managerChatList', [ManagerChatListControler::class, 'show']);
 
-
-Route::get('/manager/managerChatList', function () {
-    return view('manager/managerChatList' , [
-        "chatList" => [//チャット一覧の配列
-            [
-                'userId' => 0,//ユーザーID(多分ページ遷移するときに使うかな？)
-                'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
-                'userName' => '宇宙猫',//ユーザー名
-                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-                'commentNum' => '1',//コメント数
-            ],
-            [
-                'userId' => 1,//ユーザーID(多分ページ遷移するときに使うかな？)
-                'userImgName' => 'uchuneko.png',//ユーザーのプロフィール画像名
-                'userName' => '宇宙猫',//ユーザー名
-                'comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？',//最新のコメント表示
-                'commentNum' => '1',//コメント数
-            ]
-        ],
-        'menu' => [
-            'chat' => ['img' => 'chatCheck.png', 'name' => 'check'],
-            'lostList' => ['img' => 'lost.png', 'name' => 'notCheck'],
-            'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
-        ]//メニューバー関連の配列選択されてるページだと画像名にCheckが入る
-
-    ]);
-});
-
-Route::get('/user/userChat', function () {
-    return view('user/userChat' , [
-        'managerImgName' => 'kizoku.png',//店のプロフィール画像名
-        'managerName' => '鳥貴族',//店名
-        'chat' => [
-            ['comment' => 'すみません。今日そちらで20時くらいに食事をしたのですがそちらにハンカチを落としていきませんでしたか？' , 'who' => 'userComment'],
-            ['comment' => 'ご来店いただきありがとうございます。落とされたハンカチがどのようなものか特徴を教えていただけますか？' , 'who' => 'managerComment'],
-            ['comment' => '水色とグレーのミレミアムファルコン号のハンカチです' , 'who' => 'userComment'],
-            ['comment' => 'handkerchief.jpg' , 'who' => 'userImgComment'],
-            ['comment' => 'handkerchief.jpg' , 'who' => 'managerImgComment'],
-            ['comment' => 'こちらでしょうか？' , 'who' => 'managerComment'],
-        ],//コメントは二次元配列で、画像はcommentに画像名を、whoはclassを書くとき用(ユーザー：userComment , 店：managerComment , ユーザー画像：userImgComment , 店画像：managerImgComment)
-        'input' => ''//いるかわからんけどインプットの内容
-    ]);
-});
+Route::get('/user/userChat', [UserChatController::class, 'show']);
 
 
 Route::get('/manager/managerChat', function () {
