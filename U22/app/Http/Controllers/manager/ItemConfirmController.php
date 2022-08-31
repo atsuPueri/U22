@@ -61,8 +61,7 @@ class ItemConfirmController extends Controller
         return view('manager/item_confirm', [
             'data' => [
                 "category" => $type,
-                "date" => \date('Y年m月d日'),
-                "time" => "24時59分",
+                "date" => \date('Y年m月d日' , $time_stamp),
                 "detail" => $feature
             ]
         ]);
