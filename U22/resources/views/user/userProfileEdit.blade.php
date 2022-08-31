@@ -48,6 +48,7 @@
             <div class="editInput">
             <div class="title">
                     <p>パスワード</p>
+                    <p>変更したい場合にのみ入力してください</p>
                     <p class="errMsg">{{$edit['pass']['errMsg']}}</p>
                 </div>
                 <input type="password" name="password" value="{{$edit['pass']['value']}}" class="edit">

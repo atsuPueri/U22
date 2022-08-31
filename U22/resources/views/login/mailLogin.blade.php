@@ -25,6 +25,9 @@
                     <dd><input type="text" name="password" id="password" value=""></dd>
                     <dd class="errMsg">{{session('errPass')}}</dd>
 
+                    <dt><label for="profession">USER or MANAGER</label></dt>
+                    <dd><input type="radio" name="profession" value="user" checked>ユーザー</dd>
+                    <dd><input type="radio" name="profession" value="manager">店舗</dd>
                 </dl>
                 <button type="submit" name="" value="">LOGIN</button>
             </form>
