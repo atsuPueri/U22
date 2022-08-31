@@ -8,6 +8,7 @@ use App\Http\Controllers\manager\ManagerChatListControler;
 use App\Http\Controllers\manager\ManagerEditPropertyNotificationController;
 use App\Http\Controllers\manager\ManagerLostListController;
 use App\Http\Controllers\User\SerchResultController;
+use App\Http\Controllers\manager\ManagerProfileController;
 use App\Http\Controllers\User\UserChatController;
 use App\Http\Controllers\User\UserChatListController;
 use App\Http\Controllers\User\userCheckController;
@@ -92,18 +93,18 @@ Route::post('/user/userRegist', [UserRegistController::class, 'show']);
 
 Route::get('/user/userProfile', [userProfileController::class, 'show']);
 
-
-Route::get('/manager/managerProfile', function () {
-    return view('manager/managerProfile' , [
-        'managerImg' => 'kizoku.png',//画像名
-        'managerName' => 'uchuneko',//ユーザー名
-        'managerMail' => 'uchuneko@gmail.com',//ユーザー名
-        'managerTell' => '00000000000',//電話番号
-        'managerAddress' => '大阪府大阪市生野区生野西2－5－14',//住所
-        'managerId' => '0',//ユーザーID(いるかわからんけど一応)
-        'managerPass' => '•••••••••'//パスワード(伏字になってる)
-    ]);
-});
+Route::get('/manager/managerProfile', [managerProfileController::class, 'show']);
+// Route::get('/manager/managerProfile', function () {
+//     return view('manager/managerProfile' , [
+//         'managerImg' => 'kizoku.png',//画像名
+//         'managerName' => 'uchuneko',//ユーザー名
+//         'managerMail' => 'uchuneko@gmail.com',//ユーザー名
+//         'managerTell' => '00000000000',//電話番号
+//         'managerAddress' => '大阪府大阪市生野区生野西2－5－14',//住所
+//         'managerId' => '0',//ユーザーID(いるかわからんけど一応)
+//         'managerPass' => '•••••••••'//パスワード(伏字になってる)
+//     ]);
+// });
 
 // プロフィール編集
 Route::get('/user/userProfileEdit', [UserProfileEditController::class, 'show']);
