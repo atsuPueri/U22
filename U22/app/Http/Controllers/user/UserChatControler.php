@@ -9,12 +9,35 @@ use App\Library\Chat\usecase\GetChatRoom\GetChatRoom;
 use App\Library\Helper\GetNowLoginUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\DB;
 
 class UserChatController extends Controller
 {
     public function show(Request $request)
     {
-        $chat_room_id = $request->input('') ?? \session('room_id');
+        /** @var GetNowLoginUser */
+        $GetUser = new GetNowLoginUser();
+
+        /** @var UserGeneral */
+        $user = $GetUser->get(GetNowLoginUser::TYPE_GENERAL);
+        if (null === $user) {
+            return redirect('/login/mailLogin');
+        }
+
+        $userShop_id = $request->input('user_id') ?? \session('room_id');
+        $rs = DB::table('chat_room')
+            ->where('user_shop', '=', $userShop_id)
+            ->where('user_general_id', '=', $user->id)
+            ->first();
+
+        // なかった時に作る
+        if ($rs === null) {
+            $chat_room_id = DB::table('chat_room')->insertGetId([
+                'user_general_id' => $user->id,
+                'user_shop_id' => $userShop_id
+            ]);
+        }
+        $chat_room_id = $chat_room_id;
         $request->session()->flash('room_id', $chat_room_id);
 
         if ($chat_room_id === null) {
