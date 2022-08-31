@@ -15,6 +15,7 @@ class UserInputController extends Controller
             'errTel' => '',
             'errMail' => '',
             'errPassword' => '',
+            'errAddress' => '',
         ]);
     }
 
@@ -55,6 +56,7 @@ class UserInputController extends Controller
                 ->with('tel', $request->input('userTel'))
                 ->with('mail', $request->input('userMail'))
                 ->with('password', $request->input('userPassword'))
+                ->with('address', $request->input('userAddress'))
                 ->with('profession', $request->input('profession'));
         }
     }
