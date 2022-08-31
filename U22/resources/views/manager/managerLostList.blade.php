@@ -52,6 +52,8 @@
                 @endforeach
             {{-- 繰り返し処理 End --}}
         </div>
+
+        <a href="./manager/item_regi" id="registerBtn">忘れ物登録</a>
     </main>
     {{view('/manager/managerMenu', [
         'menu' => [
