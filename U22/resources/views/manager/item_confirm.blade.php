@@ -14,13 +14,7 @@
         <article>
             <h2 class="visuallyhidden">忘れ物の内容</h2>
         </article>
-        <section id="image">
-            <h3>写真</h3>
-            <img src="../img/image.png" alt="忘れ物１">
-            <img src="../img/image.png" alt="忘れ物２">
-            <img src="../img/image.png" alt="忘れ物３">
-            <img src="../img/image.png" alt="忘れ物４">
-        </section>
+
         <section id="category">
             <h3>カテゴリー</h3>
             <p>傘</p>
@@ -37,9 +31,10 @@
             <h3>特徴</h3>
             <p>大きくて黒色。絵の部分が木でできている。</p>
         </section>
-        <form action="#">
-            <button type="submit">戻る</button>
-            <button type="submit">登録</button>
+        <form action="./item_confirm" method="POST">
+            @csrf
+            <button type="submit" name="btn" value="back">戻る</button>
+            <button type="submit" name="btn" value="on">登録</button>
         </form>
     </main>
 </body>

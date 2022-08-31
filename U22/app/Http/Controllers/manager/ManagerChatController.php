@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Library\Chat\ChatMessage;
 use App\Library\Chat\usecase\GetChatRoom\GetChatRoom;
+use App\Library\Chat\usecase\SendChat\SendChat;
+use App\Library\Chat\usecase\SendChat\SendChatAdapter;
+use App\Library\Helper\GetNowLoginUser;
 
 class ManagerChatController extends Controller
 {
     public function show(Request $request)
     {
         $chat_room_id = $request->input('');
+        $request->session()->flash('room_id', $chat_room);
 
         /** @var GetChatRoom */
         $GetChatRoom = \resolve(GetChatRoom::class);
@@ -46,4 +50,25 @@ class ManagerChatController extends Controller
         ]);
     }
 
+    public function send(Request $request)
+    {
+        /** @var SendChat */
+        $Send = \resolve(SendChat::class);
+
+        /** @var GetNowLoginUser */
+        $GetUser = new GetNowLoginUser();
+        /** @var UserGeneral */
+        $user = $GetUser->get(GetNowLoginUser::TYPE_SHOP);
+        if (null === $user) {
+            return redirect('/login/mailLogin');
+        }
+
+        $chat_room_id = \session('room_id');
+        if (null !== $chat_room_id) {
+
+            $Send->save_image($chat_room_id, $user->id, 2, 'chatImg');
+            $Send->save_message($chat_room_id, $user->id, 0, 'chatComment');
+        }
+        return $this->show($request);
+    }
 }

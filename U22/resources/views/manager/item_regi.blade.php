@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/destyle.css">
-    <link rel="stylesheet" href="./css/item_regi.css">
+    <link rel="stylesheet" href="../css/destyle.css">
+    <link rel="stylesheet" href="../css/item_regi.css">
     <title>落とし物登録</title>
 </head>
 <body>
@@ -12,83 +12,61 @@
         <h1>忘れ物登録</h1>
         <article>
             <h2 class="visuallyhidden">忘れ物</h2>
-            <form action="#">
-                <section id="image">
-                    <h3>写真</h3>
-                    <label for="image1">
-                        <img src="../img/image.png" alt="忘れ物１">
-                        <input type="file" name="" id="image1">
-                    </label>
-                    <label for="image2">
-                        <img src="../img/image.png" alt="忘れ物２">
-                        <input type="file" name="" id="image2">
-                    </label>
-                    <label for="image3">
-                        <img src="../img/image.png" alt="忘れ物３">
-                        <input type="file" name="" id="image3">
-                    </label>
-                    <label for="image4">
-                        <img src="../img/image.png" alt="忘れ物４">
-                        <input type="file" name="" id="image4">
-                    </label>
-                </section>
+            <form action="./item_confirm" method="POST">
+                @csrf
+
                 <section id="category">
                     <h3>カテゴリ</h3>
-                    <select name="" id="">
-                        <option value="" selected>選択してください</option>
-                        <option value="">傘</option>
-                        <option value="">財布</option>
+                    <select name="category" id="">
+                        @foreach ($category as $key => $val)
+                            <option value="{{$key}}">{{$val}}</option>
+                        @endforeach
                     </select>
                 </section>
+
                 <section id="date">
                     <h3>日付</h3>
-                    <select name="" id="">
-                        <option value="" selected>----</option>
-                        <option value="">2020</option>
-                        <option value="">2021</option>
-                        <option value="">2022</option>
-                    </select>
-                    年
-                    <select name="" id="">
-                        <option value="" selected>--</option>
-                        <option value="">01</option>
-                        <option value="">02</option>
-                        <option value="">12</option>
-                    </select>
-                    月
-                    <select name="" id="">
-                        <option value="" selected>--</option>
-                        <option value="">01</option>
-                        <option value="">02</option>
-                        <option value="">31</option>
-                    </select>
-                    日
-                </section>
+                    <input type="date" name="date">
                 <section id="time">
                     <h3>時間</h3>
-                    <select name="" id="">
-                        <option value="" selected>--</option>
-                        <option value="">0</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">24</option>
+                    <select name="h" id="">
+                        <option value="01" selected>01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
                     </select>
                     時
-                    <select name="" id="">
-                        <option value="" selected>--</option>
-                        <option value="">00</option>
-                        <option value="">01</option>
-                        <option value="">02</option>
-                        <option value="">59</option>
+                    <select name="i" id="">
+                        <option value="00" selected>00</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
                     </select>
                     分
                 </section>
+
+                {{-- あつが追加したのでレイアウト崩れてるかも --}}
+                <section>
+                    <h3>現金がいくらあったか なければ記載不要</h3>
+                    <input type="number" name="price">
+                </section>
+
                 <section id="detail">
                     <h3>特徴</h3>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="特徴を書いてください"></textarea>
+                    <textarea name="feature" id="" cols="30" rows="10" placeholder="特徴を書いてください"></textarea>
                 </section>
                 <button type="submit">確認画面へ</button>
-            </form>  
+            </form>
         </article>
     </main>
 </body>

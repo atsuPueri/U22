@@ -45,7 +45,7 @@ class SignInAdapter implements SignInPort
                     'expiration_date' => time () + (60 * 60),
                 ]);
 
-            Cookie::queue('login_token', $token, 1);
+            Cookie::queue('login_token', $token, 3);
             return true;
         }
         return false;

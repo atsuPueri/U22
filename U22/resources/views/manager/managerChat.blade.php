@@ -27,7 +27,8 @@
 
 
     <div id="chatForm">
-        <form action="./managerChat">
+        <form action="./managerChat" method="POST" enctype="multipart/form-data">
+            @csrf
             <input type="file" name="chatImg" id="chatImg">
             <input type="text" name="chatComment" id="chatComment" value="">
             <button type="submit">送信</button>

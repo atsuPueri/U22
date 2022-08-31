@@ -36,7 +36,22 @@ class ManagerEditPropertyNotificationController extends Controller
         $phone_number = $request->input('phone_number');
 
         $right = $request->input('right');
+        if ($right == 1) {
+            $r = new PDFText(63, 56, '〇', ['font_size' => 15]);
+        } elseif ($right == 2) {
+            $r = new PDFText(63, 63, '〇', ['font_size' => 15]);
+        } elseif ($right == 3) {
+            $r = new PDFText(109, 56, '〇', ['font_size' => 15]);
+        } elseif ($right == 4) {
+            $r = new PDFText(109, 63, '〇', ['font_size' => 15]);
+        }
 
+        $nameShow = $request->input('nameShow');
+        if ($nameShow == 1) {
+            $n = new PDFText(177, 59, '〇', ['font_size' => 17]);
+        } elseif ($nameShow == 2) {
+            $n = new PDFText(190, 59, '〇', ['font_size' => 17]);
+        }
 
         $pdflib = new PDFLib();
         return $pdflib->write_pdf(\resource_path() . '/pdf/style05.pdf', [
@@ -50,18 +65,13 @@ class ManagerEditPropertyNotificationController extends Controller
             new PDFText(146, 26, $account, ['font_size' => 8]),
             new PDFText(146, 33, $phone_number, ['font_size' => 8]),
 
-            new PDFText(63, 56, '〇', ['font_size' => 15]),
-            new PDFText(63, 63, '〇', ['font_size' => 15]),
-            new PDFText(109, 56, '〇', ['font_size' => 15]),
-            new PDFText(109, 63, '〇', ['font_size' => 15]),
+            $r,
+            $n,
 
-            new PDFText(177, 59, '〇', ['font_size' => 17]),
-            new PDFText(190, 59, '〇', ['font_size' => 17]),
-
-            new PDFText(37, 86, '￥１００', ['font_size' => 14]),
-            new PDFText(32, 102, '￥１０００', ['font_size' => 14]),
-            new PDFText(27, 118, '￥１００００', ['font_size' => 14]),
-            new PDFText(27 - 5, 118 + 16, '￥１０００００', ['font_size' => 14]),
+            // new PDFText(37, 86, '￥１００', ['font_size' => 14]),
+            // new PDFText(32, 102, '￥１０００', ['font_size' => 14]),
+            // new PDFText(27, 118, '￥１００００', ['font_size' => 14]),
+            // new PDFText(27 - 5, 118 + 16, '￥１０００００', ['font_size' => 14]),
 
             new PDFText(59, 87, '長財布'),
             new PDFText(59, 87 + 8, '指輪'),

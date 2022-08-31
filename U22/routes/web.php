@@ -4,15 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\login\MailLoginController;
 use App\Http\Controllers\login\TelLoginController;
+use App\Http\Controllers\manager\ItemConfirmController;
+use App\Http\Controllers\manager\ItemRegiController;
 use App\Http\Controllers\manager\ManagerChatListControler;
 use App\Http\Controllers\manager\ManagerEditPropertyNotificationController;
 use App\Http\Controllers\manager\ManagerLostListController;
 use App\Http\Controllers\User\SerchResultController;
 use App\Http\Controllers\manager\ManagerProfileController;
+use App\Http\Controllers\ManagerChatController;
 use App\Http\Controllers\User\UserChatController;
 use App\Http\Controllers\User\UserChatListController;
 use App\Http\Controllers\User\userCheckController;
 use App\Http\Controllers\User\UserInputController;
+use App\Http\Controllers\User\UserLostListController;
 use App\Http\Controllers\User\userProfileController;
 use App\Http\Controllers\User\UserProfileEditController;
 use App\Http\Controllers\User\UserRegistController;
@@ -36,36 +40,16 @@ Route::get('/', function () {
 });
 
 Route::get('/user/userChatList', [UserChatListController::class, 'show']);
-Route::get('/manager/managerChatList', [ManagerChatListControler::class, 'show']);
-
+Route::get('/user/userChat', [UserChatController::class, 'show']);
 Route::get('/user/userChat', [UserChatController::class, 'show']);
 
+Route::get('/manager/managerChatList', [ManagerChatListControler::class, 'show']);
+Route::get('/manager/managerChat', [ManagerChatController::class, 'show']);
+Route::post('/manager/managerChat', [ManagerChatController::class, 'send']);
 
-Route::get('/manager/managerChat', function () {
-
-});
 
 // 庶民落とし物
-Route::get('/user/userLostList', function () {
-    // $user = new User();
-    return view('user/userLostList', [
-        'genre' => [
-            "アクセサリ",
-            "革小物",
-            "傘",
-            "その他",
-        ], // 種類名
-        'data' => [
-            ["id" => "1","date" => "20220724", "name" => "テストデータ1", "genre" => "アクセサリー", "state" => "有"],
-            ["id" => "2","date" => "20220726", "name" => "テストデータ2", "genre" => "革小物", "state" => "無"],
-            ["id" => "3","date" => "20220726", "name" => "テストデータ3", "genre" => "アクセサリー", "state" => "有"],
-            ["id" => "4","date" => "20220727", "name" => "テストデータ4", "genre" => "傘", "state" => "有"],
-            ["id" => "5","date" => "20220728", "name" => "テストデータ5", "genre" => "衣類", "state" => "無"],
-            ["id" => "6","date" => "20220730", "name" => "テストデータ6", "genre" => "衣類", "state" => "有"],
-            ["id" => "7","date" => "20220731", "name" => "テストデータ7", "genre" => "アクセサリー", "state" => "無"],
-        ],// 忘れ物一覧
-    ]);
-});
+Route::get('/user/userLostList', [UserLostListController::class, 'show']);
 
 // 管理落とし物
 Route::get('/manager/managerLostList', [ManagerLostListController::class, 'show']);
@@ -126,23 +110,11 @@ Route::get('/manager/managerProfileEdit', function () {
 Route::get('/manager/managerEditPropertyNotification', [ManagerEditPropertyNotificationController::class, 'show']);
 Route::post('/manager/managerEditPropertyNotification', [ManagerEditPropertyNotificationController::class, 'edit']);
 
+
+Route::get('/manager/item_regi', [ItemRegiController::class, 'show']);
+
 //落とし物登録確認画面
-Route::get('/manager/item_confirm', function () {
-    return view('manager/item_confirm', [
-        'data' => [
-            "images" => [ //登録される画像　最大４枚
-                "image1" => "img1.jpg",
-                "image2" => "img2.jpg",
-                "image3" => "img3.jpg",
-                "image4" => "img4.jpg"
-            ],
-            "category" => "傘",
-            "date" => "2022年12月12日",
-            "time" => "24時59分",
-            "detail" => "大きくて黒色。絵の部分が木でできている。"
-        ]
-    ]);
-});
+Route::post('/manager/item_confirm', [ItemConfirmController::class, 'show']);
 
 //検索画面：過去に訪れた店舗
 Route::get('/user/search', function(){
@@ -158,3 +130,4 @@ Route::get('/user/search', function(){
 
 //検索結果画面
 Route::get('/user/search_result', [SerchResultController::class, 'show']);
+
