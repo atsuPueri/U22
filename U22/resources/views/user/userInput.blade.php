@@ -40,7 +40,7 @@
                     <dd class="errMsg">{{$errPassword}}</dd>
 
                     <div id="address">
-                        <dt><label for="userPassword">住所<span>必須</span></label></dt>
+                        <dt><label for="userAddress">住所<span>必須</span></label></dt>
                         <dd><input type="text" name="userAddress" id="userAddress" value=""></dd>
                     </div>
 
