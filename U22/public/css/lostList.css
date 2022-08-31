@@ -12,8 +12,10 @@
     background-color: #D1F6F9;
   }
   body main {
+    position: relative;
     width: 90%;
     margin: 0 auto;
+    margin-bottom: 30px;
     /* Chrome, Safari 対応 */
   }
   body main select {
@@ -99,5 +101,18 @@
     border: none;
     border-radius: 0px;
     box-shadow: none;
+  }
+
+  #registerBtn{
+    font-size: 18px;
+    width: 130px;
+    padding: 20px;
+    border-radius: 20px;
+    position: absolute;
+    background-color: rgb(113, 175, 226);
+    top: 85%;
+    left: 65%;
+    text-align: center;
+    z-index: 7;
   }
 }/*# sourceMappingURL=lostList.css.map */
