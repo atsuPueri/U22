@@ -56,7 +56,7 @@ class UserInputController extends Controller
                 ->with('tel', $request->input('userTel'))
                 ->with('mail', $request->input('userMail'))
                 ->with('password', $request->input('userPassword'))
-                ->with('Address', $request->input('Address'))
+                ->with('address', $request->input('userAddress'))
                 ->with('profession', $request->input('profession'));
         }
     }
