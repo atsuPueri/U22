@@ -3,14 +3,14 @@ namespace App\Library\LostItem;
 
 class LostItem
 {
-    private int $id;
-    private int $shop_id;
-    private int $genre_id;
-    private string $name;
-    private int $acquisition_date;
-    private ?int $pickup_date;
-    private ?int $pickup_user_id;
-    private ?string $police_station_address;
+    public int $id;
+    public int $shop_id;
+    public int $genre_id;
+    public string $name;
+    public int $acquisition_date;
+    public ?int $pickup_date;
+    public ?int $pickup_user_id;
+    public ?string $police_station_address;
 
     public function __construct(
         int $id,
@@ -47,6 +47,4 @@ class LostItem
             $info['police_station_address'] ?? null,
         );
     }
-
-
 }

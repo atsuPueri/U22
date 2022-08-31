@@ -27,10 +27,12 @@ class MailLoginController extends Controller
                 "regex:/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
             ],
             'password' => ['required'],
+            'profession' => ['required'],
         ], [
             'mail.required' => 'メールアドレスが空です、入力してください。',
             'mail.regex' => 'メールアドレスが適切な形式ではありません。',
-            'password.required' => 'パスワードが空です、入力してください。'
+            'password.required' => 'パスワードが空です、入力してください。',
+            'profession.required' => 'どちらでログインするか選択してください。',
         ]);
 
         // 失敗時true
@@ -38,7 +40,8 @@ class MailLoginController extends Controller
             $errors = $validator->errors();
             return redirect('./login/mailLogin')
                 ->with('errMail', $errors->first('mail'))
-                ->with('errPass', $errors->first('password'));
+                ->with('errPass', $errors->first('password'))
+                ->with('errPro', $errors->first('profession'));
         }
 
         /** @var SignIn */
@@ -46,12 +49,25 @@ class MailLoginController extends Controller
 
         $mail_address = $request->input('mail', '');
         $password = $request->input('password', '');
-        $token_cookie = $SignIn->signin_mail($mail_address, $password, SignIn::USER_TYPE_GENERAL);
 
-        if (!$token_cookie) {
+        if ($request->input('profession') === 'user') {
+            $type = SignIn::USER_TYPE_GENERAL;
+        } elseif ($request->input('profession') === 'manager') {
+            $type = SignIn::USER_TYPE_SHOP;
+        } else {
+            return redirect('/login/mailLogin');
+        }
+
+        $is_login = $SignIn->signin_mail($mail_address, $password, $type);
+
+        if (!$is_login) {
             return redirect('./login/mailLogin')
                 ->with('errMail', 'ログインに失敗しました、メールアドレス、またはパスワードが間違っています。');
         }
-        return \redirect('/user/search');
+
+        if ($type === SignIn::USER_TYPE_GENERAL) {
+            return \redirect('/user/search');
+        }
+        return \redirect('/manager/managerLostList');
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\login\MailLoginController;
 use App\Http\Controllers\login\TelLoginController;
 use App\Http\Controllers\manager\ManagerEditPropertyNotificationController;
+use App\Http\Controllers\manager\ManagerLostListController;
 use App\Http\Controllers\User\UserChatListController;
 use App\Http\Controllers\User\userCheckController;
 use App\Http\Controllers\User\UserInputController;
@@ -116,20 +117,7 @@ Route::get('/user/userLostList', function () {
 });
 
 // 管理落とし物
-Route::get('/manager/managerLostList', function () {
-    // $user = new User();
-    return view('manager/managerLostList', [
-        'data' => [
-            ["id" => "1","date" => "20220724", "name" => "テストデータ1", "genre" => "アクセサリー", "state" => "有"],
-            ["id" => "2","date" => "20220726", "name" => "テストデータ2", "genre" => "革小物", "state" => "無"],
-            ["id" => "3","date" => "20220726", "name" => "テストデータ3", "genre" => "アクセサリー", "state" => "有"],
-            ["id" => "4","date" => "20220727", "name" => "テストデータ4", "genre" => "傘", "state" => "有"],
-            ["id" => "5","date" => "20220728", "name" => "テストデータ5", "genre" => "衣類", "state" => "無"],
-            ["id" => "6","date" => "20220730", "name" => "テストデータ6", "genre" => "衣類", "state" => "有"],
-            ["id" => "7","date" => "20220731", "name" => "テストデータ7", "genre" => "アクセサリー", "state" => "無"],
-        ], // 忘れ物一覧
-    ]);
-});
+Route::get('/manager/managerLostList', [ManagerLostListController::class, 'show']);
 
 // 管理落とし物詳細
 // 管理落とし物詳細

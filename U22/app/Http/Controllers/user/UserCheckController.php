@@ -16,7 +16,6 @@ class UserCheckController extends Controller
             'password',
         ]);
 
-        \dump(session('password'));
         return view('user/userCheck',[
             'userName' => session('name'),
             'userTel' => session('tel'),
