@@ -15,7 +15,8 @@
 
 
     <div id="editForm">
-        <form action="./userProfileEdit">
+        <form action="./userProfileEdit" method="POST">
+            @csrf
             <div id="editFile">
             <div class="title">
                     <p>アイコン</p>
@@ -50,7 +51,7 @@
                     <p>変更したい場合にのみ入力してください</p>
                     <p class="errMsg">{{$edit['pass']['errMsg']}}</p>
                 </div>
-                <input type="password" name="address" value="{{$edit['pass']['value']}}" class="edit">
+                <input type="password" name="password" value="{{$edit['pass']['value']}}" class="edit">
             </div>
             <button type="submit" name="editBtn">変更する</button>
         </form>
