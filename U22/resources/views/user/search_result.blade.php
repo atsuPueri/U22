@@ -28,6 +28,7 @@
                     <h3>{{$content['name']}}</h3>
                     <p>{{$content['address']}}</p>
                     <p>{{$content['address2']}}</p>
+                    <p><a href="./userLostList?managerId={{$content['managerId']}}"></a></p>
                 </li>
                 @endforeach
             </ul>
