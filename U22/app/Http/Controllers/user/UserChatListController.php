@@ -14,11 +14,18 @@ class UserChatListController extends Controller
 {
     public function show()
     {
+        /** @var GetNowLoginUser */
+        $GetUser = new GetNowLoginUser();
+
+        /** @var UserGeneral */
+        $user = $GetUser->get(GetNowLoginUser::TYPE_GENERAL);
+
+        if (null === $user) {
+            return redirect('/login/mailLogin');
+        }
+
         /** @var GetChatRoom */
         $GetChatRoom = \resolve(GetChatRoom::class);
-
-        $GetUser = new GetNowLoginUser();
-        $user = $GetUser->get(GetNowLoginUser::TYPE_GENERAL);
 
         $room_array  = $GetChatRoom->get_all($user->id, GetChatRoom::USER_TYPE_GENERAL);
 
