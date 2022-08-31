@@ -20,9 +20,6 @@
                 <p>{{$list['userName']}}</p>
                 <p class="newComment">{{$list['comment']}}</p>
             </div>
-            <div class="commentNumber none">
-                <p>{{$list['commentNum']}}</p>
-            </div>
             <a href="./managerChat?userId={{$list['userId']}}"></a>
         </div>
         @endforeach
