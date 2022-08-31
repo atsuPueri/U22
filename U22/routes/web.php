@@ -7,6 +7,7 @@ use App\Http\Controllers\login\TelLoginController;
 use App\Http\Controllers\manager\ManagerChatListControler;
 use App\Http\Controllers\manager\ManagerEditPropertyNotificationController;
 use App\Http\Controllers\manager\ManagerLostListController;
+use App\Http\Controllers\User\SerchResultController;
 use App\Http\Controllers\User\UserChatController;
 use App\Http\Controllers\User\UserChatListController;
 use App\Http\Controllers\User\userCheckController;
@@ -155,21 +156,4 @@ Route::get('/user/search', function(){
 });
 
 //検索結果画面
-Route::get('/user/search_result', function(){
-    return view('user/search_result',[
-        'data' => [
-            ['managerId' => '1' ,"name" => "鳥貴族梅田店", "img" => "kizoku.png","address" => "大阪府大阪市北区芝田1-8-1", "address2" => "北野阪急ビル(D.D.HOUSE)2階"],
-            ['managerId' => '2' ,"name" => "鳥貴族中崎町店", "img" => "kizoku.png","address" => "大阪府大阪市北区堂山町15-15", "address2" => "4階"],
-            ['managerId' => '3' ,"name" => "鳥貴族阪急東通り２号店", "img" => "kizoku.png","address" => "大阪府大阪市北区堂山町5-9", "address2" => "扇会館3階"],
-            ['managerId' => '4' ,"name" => "鳥貴族阪急東通り３号店", "img" => "kizoku.png","address" => "大阪府大阪市北区小松原町1-10", "address2" => "梅田パルビル4階"],
-            ['managerId' => '5' ,"name" => "鳥貴族曽根崎センタービル店", "img" => "kizoku.png","address" => "大阪府大阪市北区曽根崎2-10-15", "address2" => "曽根崎センタービル B1"],
-            ['managerId' => '6' ,"name" => "鳥貴族太融寺店", "img" => "kizoku.png","address" => "大阪府大阪市北区太融寺町5-8", "address2" => "B1"],
-            ['managerId' => '7' ,"name" => "鳥貴族福島店", "img" => "kizoku.png","address" => "大阪府大阪市福島区小松原町1-10", "address2" => ""],
-        ],
-        'menu' => [
-            'chat' => ['img' => 'chat.png', 'name' => 'notCheck'],
-            'search' => ['img' => 'searchCheck.png', 'name' => 'check'],
-            'resume' => ['img' => 'resume.png', 'name' => 'notCheck']
-        ]//メニューバー関連の配列選択されてるページだと画像名にCheckが入る
-    ]);
-});
+Route::get('/user/search_result', [SerchResultController::class, 'show']);

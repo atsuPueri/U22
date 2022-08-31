@@ -12,6 +12,7 @@ class userProfileController extends Controller
     {
         /** @var GetNowLoginUser */
         $GetUser = new GetNowLoginUser();
+        
         /** @var UserGeneral */
         $user = $GetUser->get(GetNowLoginUser::TYPE_GENERAL);
 

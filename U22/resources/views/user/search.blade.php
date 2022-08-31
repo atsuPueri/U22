@@ -12,8 +12,8 @@
 <body>
     <header>
         <h1 class="visuallyhidden">検索画面</h1>
-        <form action="#" class="search_container">
-            <input type="text" placeholder="店舗名を入力してください">
+        <form action="./search_result" method="GET" class="search_container">
+            <input type="text" name="shop_name" placeholder="店舗名を入力してください">
             <button type="submit">
                 <img src="../img/parts/search.png" alt="">
             </button>
